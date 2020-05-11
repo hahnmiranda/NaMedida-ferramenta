@@ -29,9 +29,9 @@ $dados = mysqli_fetch_array($resultado);
 ?>
 
 <div class="row">
-	<div class="col s12 m6 push-m3">
+	<div class="col s12 m7 push-m3">
 		<h3 class="light"> Olá <?php echo$dados['nome']; ?></h3>
-		<table class="striped">
+		<table class="striped responsive-table">
 			<thead>
 				<tr>
 					<th>Nome:</th>

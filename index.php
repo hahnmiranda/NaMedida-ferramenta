@@ -43,22 +43,77 @@ endif;
 	<title>Login</title>
 </head>
 <body>
-	<h1> Login </h1>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
 
-	<?php 
-		if (!empty($erros)) {
-			foreach ($erros as $key) {
-				echo $key."<br>";
-			}
+	<!-- adição de estilos -->
+
+	<style>
+		body {
+			background-image: url(img/PUCPR-campus3.jpg); 
+			background-size: cover;
+			color: #fff;
 		}
-	?>
+		.login {
+			margin-top: 100px;
+		}
+		.login .card {
+			background: rgba(0,0,0, .8);
+		}
+		.login label {
+			font-size: 16px;
+			color: #ccc;
+		}
+		.login input {
+			font-size: 20px;
+			color: #fff;
+		}
+		.login button:hover {
+			padding: 0px 40px;
+		}
+	</style>
 
-	<hr>
-	<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
-		Login: <input type="text" name="login"><br>
-		Senha: <input type="password" name="senha"><br>
-		<button type="submit" name="btn-entrar">Entrar </button>
-	</form>
+	<div class="row login" ac>
+		<div class="col s12 m4 14 offset-14">
+			<div class="card">
 
+				<div class="card-action green white-text">
+					<h3>Faça seu login</h3>
+				</div>
+				<div class="card-content">
+					<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+					<div class="form-field">
+						<label for="login">Login</label>
+						<input type="text" name="login">
+					</div><br>
+
+					<div class="form-field">
+						<label for="senha">Senha</label>
+						<input type="password" name="senha">
+					</div><br>
+
+					<div class="form-field">
+						<input type="checkbox" id="remember">
+						<label for="remember">Lembrar-me</label>
+					</div><br>
+
+					<div class="form-field center-align">
+						<button class="btn-large green" name="btn-entrar">Login</button>
+					</div><br>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
