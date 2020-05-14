@@ -8,3 +8,7 @@ Fiz um login simples e comecei a desenvolver o dashboard com a visualização da
 **11-05-2020**
 
 Conclusão do login com interface respansiva
+
+**13-05-2020**
+
+Correção de alguns problemas na tela de login e desenvolvimento da navbar

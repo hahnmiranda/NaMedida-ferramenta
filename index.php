@@ -1,11 +1,11 @@
 <?php
 // conexão
-require_once 'php/php_action/db_connect.php';
+require_once 'php/db_connect.php';
 
 // sessão
 session_start();
 
-// teste botão
+// botão enviar
 if(isset($_POST['btn-entrar'])):
 	$erros = array();
 	// sempre deve ser feita a limpeza dos dados, pois usuários mal intencionados podem digitar comandos sql
@@ -16,6 +16,7 @@ if(isset($_POST['btn-entrar'])):
 		$erros[] = "<li>O campo login/senha deve ser preenchido</li>";
 	else:
 		$sql = "SELECT login FROM Usuario WHERE login = '$login'";
+		// realizando a consulta no banco
 		$resultado = mysqli_query($connect, $sql);
 
 		if(mysqli_num_rows($resultado) > 0):
@@ -23,10 +24,12 @@ if(isset($_POST['btn-entrar'])):
 			$resultado = mysqli_query($connect, $sql);
 
 			if(mysqli_num_rows($resultado) == 1):
+				// coloca todos os dados da consulta que estão na variável $resultado em um array de dados $dados
 				$dados = mysqli_fetch_array($resultado);
+				// encerrando a conexão
 				mysqli_close($connect);
 				$_SESSION['logado'] = true;
-				$_SESSION['idUsuario'] = $dados['id'];
+				$_SESSION['idUsuario'] = $dados['idUsuario'];
 				header('Location: php/dashboard.php');
 			else:
 				$erros[] = "<li>Usuário ou senha inválidos!</li>";
@@ -36,44 +39,21 @@ if(isset($_POST['btn-entrar'])):
 		endif;
 	endif;
 endif;
+
+// incluindo os estilos
+include_once 'php/includes/style.php';
 ?>
 
 <html>
 <head>
 	<title>Login</title>
+	<meta charset="utf-8">
 </head>
-<body>
+<body class="index-body">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
 
-	<!-- adição de estilos -->
-
-	<style>
-		body {
-			background-image: url(img/PUCPR-campus3.jpg); 
-			background-size: cover;
-			color: #fff;
-		}
-		.login {
-			margin-top: 100px;
-		}
-		.login .card {
-			background: rgba(0,0,0, .8);
-		}
-		.login label {
-			font-size: 16px;
-			color: #ccc;
-		}
-		.login input {
-			font-size: 20px;
-			color: #fff;
-		}
-		.login button:hover {
-			padding: 0px 40px;
-		}
-	</style>
-
-	<div class="row login" ac>
-		<div class="col s12 m4 14 offset-14">
+	<div class="row login">
+		<div class="col s12 m6 offset-m3 l4 offset-l4 z-depth-6">
 			<div class="card">
 
 				<div class="card-action green white-text">
@@ -97,7 +77,7 @@ endif;
 					</div><br>
 
 					<div class="form-field center-align">
-						<button class="btn-large green" name="btn-entrar">Login</button>
+						<button class="btn-large green" type="submit" name="btn-entrar">Login</button>
 					</div><br>
 					</form>
 				</div>

@@ -34,7 +34,7 @@ include_once 'includes/style.php';
 <div class="row">
 	<div class="col s12 m7 push-m3">
 		<h3 class="light"> Olá <?php echo $dados['nome']; ?>,</h3>
-		<h5 class="light"> Veja abaixo a quantidade de registros que você possui</h5>
+		<h5 class="light"> Cú da vó</h5>
 		<table class="striped responsive-table">
 			<!-- Imprimindo cabeçalhos -->
 			<thead>
@@ -62,7 +62,7 @@ include_once 'includes/style.php';
 
 		<a class='dropdown-button btn waves-effect waves-light blue' href='#' data-target='dropdown2'>adicionar registro<i class="material-icons left">add</i></a>
 
-		<a class="waves-effect right blue btn" href="perfil.php"><i class="material-icons left">person_outline</i>perfil</a>
+		<a class="waves-effect right blue btn" href="#"><i class="material-icons left">person_outline</i>perfil</a>
 
 		<!-- Botão dashboard -->
 						  <ul id='dropdown2' class='dropdown-content'>

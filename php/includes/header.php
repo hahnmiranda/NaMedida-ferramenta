@@ -2,6 +2,7 @@
   <html>
     <head>
       <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
       <title> Sistema NaMedida! </title>
       <!--Import Google Icon Font-->
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
