@@ -49,13 +49,13 @@ include_once 'includes/style.php';
 			</thead>
 			
 			<tbody>
-				<td> <?php echo $contador_organizacao; ?></td>
-				<td> - </td>
-				<td> - </td>
-				<td> - </td>
-				<td> - </td>
-				<td> - </td>
-				<td> - </td>
+				<td> <?php echo count($ids_organizacao) ?></td>
+				<td> <?php echo count($ids_objestrategico) ?> </td>
+				<td> <?php echo count($ids_pergunta) ?> </td>
+				<td> <?php echo count($ids_projeto) ?> </td>
+				<td> <?php echo count($ids_base) ?> </td>
+				<td> <?php echo count($ids_medida) ?> </td>
+				<td>  <?php echo count($ids_indicador) ?></td>
 			</tbody>
 		</table>
 		<br>
@@ -65,15 +65,15 @@ include_once 'includes/style.php';
 		<a class="waves-effect right blue btn" href="perfil.php"><i class="material-icons left">person_outline</i>perfil</a>
 
 		<!-- Botão dashboard -->
-						  <ul id='dropdown2' class='dropdown-content'>
-						    <li><a href="#!">Organizações</a></li>
-						    <li><a href="#!">Objetivos Estratégicos</a></li>
-						    <li><a href="#!">Perguntas</a></li>
-						    <li><a href="#!">Projetos</a></li>
-						    <li><a href="#!">Bases</a></li>
-						    <li><a href="#!">Medidas</a></li>
-						    <li><a href="#!">Indicadores</a></li>
-						  </ul>
+		  <ul id='dropdown2' class='dropdown-content'>
+		    <li><a href="adicionar-organizacao.php">Organizações</a></li>
+		    <li><a href="adicionar-objestrategico.php">Objetivos Estratégicos</a></li>
+		    <li><a href="#!">Perguntas</a></li>
+		    <li><a href="adicionar-projeto.php">Projetos</a></li>
+		    <li><a href="adicionar-base.php">Bases</a></li>
+		    <li><a href="#!">Medidas</a></li>
+		    <li><a href="#!">Indicadores</a></li>
+		  </ul>
 	</div>
 </div>
 

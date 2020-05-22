@@ -33,4 +33,18 @@
 	.login button:hover {
 		padding: 0px 40px;
 	}
+	.form-editar {
+		margin-top: 40px;
+	}
+	.modal-deletar-botao {
+		margin-bottom: 20px;
+		margin-left: 20px;
+	}
+	.modal-cancelar-botao {
+		margin-bottom: 20px;
+		margin-left: 20px;
+	}
+	.espaco-botao-dashboard-cadastrar {
+		margin-left: 30px;
+	}
 </style>

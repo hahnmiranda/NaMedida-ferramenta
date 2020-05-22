@@ -33,15 +33,15 @@ include_once 'includes/style.php';
 
 <div class="row">
 	<div class="col s12 m7 push-m3">
-		<h3 class="light"> Olá <?php echo $dados['nome']; ?>,</h3>
-		<h5 class="light"> Cú da vó</h5>
+		<h3 class="light"> Olá <?php echo $dados['nome']; ?></h3>
+		<h5 class="light"></h5>
 		<table class="striped responsive-table">
 			<!-- Imprimindo cabeçalhos -->
 			<thead>
 				<tr>
 				<?php
-					$contador = count($dashboard);
-					foreach ($dashboard as $key) {
+					$contador = count($usuario);
+					foreach ($usuario as $key) {
 						echo "<th>$key</th>";
 					}
 				?>
@@ -49,31 +49,18 @@ include_once 'includes/style.php';
 			</thead>
 			
 			<tbody>
-				<td> <?php echo $contador_organizacao; ?></td>
-				<td> - </td>
-				<td> - </td>
-				<td> - </td>
-				<td> - </td>
-				<td> - </td>
-				<td> - </td>
+				<?php 
+					$sql = "SELECT * FROM Usuario WHERE idUsuario = '$id'";
+					$resultado = mysqli_query($connect, $sql);
+					while ($usuario_dados = mysqli_fetch_array($resultado)) {
+				?> 
+				<td><?php echo $usuario_dados['nome']; ?> </td>
+				<td> <?php echo $usuario_dados['login']; }?>  </td>
 			</tbody>
 		</table>
 		<br>
 
-		<a class='dropdown-button btn waves-effect waves-light blue' href='#' data-target='dropdown2'>adicionar registro<i class="material-icons left">add</i></a>
-
-		<a class="waves-effect right blue btn" href="#"><i class="material-icons left">person_outline</i>perfil</a>
-
-		<!-- Botão dashboard -->
-						  <ul id='dropdown2' class='dropdown-content'>
-						    <li><a href="#!">Organizações</a></li>
-						    <li><a href="#!">Objetivos Estratégicos</a></li>
-						    <li><a href="#!">Perguntas</a></li>
-						    <li><a href="#!">Projetos</a></li>
-						    <li><a href="#!">Bases</a></li>
-						    <li><a href="#!">Medidas</a></li>
-						    <li><a href="#!">Indicadores</a></li>
-						  </ul>
+		<a href="editar-usuario.php" class="waves-effect waves-light blue btn">Alterar informações<i class="material-icons left">dialpad</i></a>
 	</div>
 </div>
 

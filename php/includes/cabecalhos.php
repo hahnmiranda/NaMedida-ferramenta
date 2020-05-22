@@ -11,9 +11,11 @@ $projeto[] = 'Descricao';
 $projeto[] = 'Responsável';
 $projeto[] = 'Data de Início';
 $projeto[] = 'Data de Término';
+$projeto[] = 'Organização';
 
 $pergunta[] = 'Pergunta';
 $pergunta[] = 'Descrição';
+$pergunta[] = 'Objetivo Estratégico';
 
 $organizacao[] = 'Nome';
 $organizacao[] = 'Descrição';
@@ -42,6 +44,7 @@ $indicador_modificacoes[] = 'Data de Alteração';
 
 $base[] = 'Nome';
 $base[] = 'Descrição';
+$base[] = 'Projeto';
 
 $dashboard[] = 'Organizações';
 $dashboard[] = 'Objetivos estratégicos';

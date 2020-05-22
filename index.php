@@ -56,7 +56,7 @@ include_once 'php/includes/style.php';
 		<div class="col s12 m6 offset-m3 l4 offset-l4 z-depth-6">
 			<div class="card">
 
-				<div class="card-action green white-text">
+				<div class="card-action blue white-text">
 					<h3>Faça seu login</h3>
 				</div>
 				<div class="card-content">
@@ -77,7 +77,7 @@ include_once 'php/includes/style.php';
 					</div><br>
 
 					<div class="form-field center-align">
-						<button class="btn-large green" type="submit" name="btn-entrar">Login</button>
+						<button class="btn-large blue" type="submit" name="btn-entrar">Login</button>
 					</div><br>
 					</form>
 				</div>

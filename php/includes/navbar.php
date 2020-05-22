@@ -18,11 +18,11 @@
 						    <li><a href="#!"><i class="material-icons">file_download</i>Importar</a></li>
 						    <li><a href="#!"><i class="material-icons">file_upload</i>Exportar</a></li>
 						    <li class="divider" tabindex="-1"></li>
-						    <li><a href="#!">Organizações</a></li>
-						    <li><a href="#!">Objetivos Estratégicos</a></li>
-						    <li><a href="#!">Perguntas</a></li>
-						    <li><a href="#!">Projetos</a></li>
-						    <li><a href="#!">Bases</a></li>
+						    <li><a href="organizacao.php">Organizações</a></li>
+						    <li><a href="objestrategico.php">Objetivos Estratégicos</a></li>
+						    <li><a href="pergunta.php">Perguntas</a></li>
+						    <li><a href="projeto.php">Projetos</a></li>
+						    <li><a href="base.php">Bases</a></li>
 						    <li><a href="#!">Medidas</a></li>
 						    <li><a href="#!">Indicadores</a></li>
 						  </ul>

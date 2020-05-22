@@ -12,3 +12,7 @@ Conclusão do login com interface respansiva
 **13-05-2020**
 
 Correção de alguns problemas na tela de login e desenvolvimento da navbar
+
+**22-05-2020**
+
+Criação da maioria dos CRUDs (faltando medida e indicador somente)
