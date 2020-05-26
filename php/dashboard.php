@@ -68,10 +68,10 @@ include_once 'includes/style.php';
 		  <ul id='dropdown2' class='dropdown-content'>
 		    <li><a href="adicionar-organizacao.php">Organizações</a></li>
 		    <li><a href="adicionar-objestrategico.php">Objetivos Estratégicos</a></li>
-		    <li><a href="#!">Perguntas</a></li>
+		    <li><a href="adicionar-pergunta.php">Perguntas</a></li>
 		    <li><a href="adicionar-projeto.php">Projetos</a></li>
 		    <li><a href="adicionar-base.php">Bases</a></li>
-		    <li><a href="#!">Medidas</a></li>
+		    <li><a href="adicionar-medida.php">Medidas</a></li>
 		    <li><a href="#!">Indicadores</a></li>
 		  </ul>
 	</div>

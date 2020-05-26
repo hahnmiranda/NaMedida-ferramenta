@@ -47,4 +47,7 @@
 	.espaco-botao-dashboard-cadastrar {
 		margin-left: 30px;
 	}
+	.vincular-pergunta-ou-medida-botao {
+		margin-top: 15px;
+	}
 </style>

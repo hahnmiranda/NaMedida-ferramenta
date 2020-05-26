@@ -23,7 +23,7 @@
 						    <li><a href="pergunta.php">Perguntas</a></li>
 						    <li><a href="projeto.php">Projetos</a></li>
 						    <li><a href="base.php">Bases</a></li>
-						    <li><a href="#!">Medidas</a></li>
+						    <li><a href="medida.php">Medidas</a></li>
 						    <li><a href="#!">Indicadores</a></li>
 						  </ul>
 						</li>

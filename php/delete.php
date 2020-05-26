@@ -105,6 +105,82 @@ if (isset($_POST['btn-deletar-pergunta'])):
 	endif;
 endif;
 
+// deletar vinculo pergunta medida
+if (isset($_POST['btn-deletar-vinculo-pergunta-medida'])):
+	$id = mysqli_escape_string($connect, $_POST['idPerguntaMedida']);
+
+	$sql = "DELETE FROM PerguntaMedida WHERE idPerguntaMedida = '".$id."'";
+
+	if(mysqli_query($connect, $sql)):
+		$_SESSION['mensagem'] = "Deletado com sucesso!";
+		header('Location: medida.php?sucesso');
+		
+	else:
+		$_SESSION['mensagem'] = "Erro ao Deletar!";
+		header('Location: medida.php?erro');
+	endif;
+endif;
+
+// deletar vinculo medida medida
+if (isset($_POST['btn-deletar-vinculo-medida-medida'])):
+	$id = mysqli_escape_string($connect, $_POST['idMedida_derivada']);
+
+	$sql = "DELETE FROM Medida_medida_associada WHERE idMedida_derivada = '".$id."'";
+
+	if(mysqli_query($connect, $sql)):
+		$_SESSION['mensagem'] = "Deletado com sucesso!";
+		header('Location: medida.php?sucesso');
+	else:
+		$_SESSION['mensagem'] = "Erro ao Deletar!";
+		header('Location: medida.php?erro');
+	endif;
+endif;
+
+// deletar medida
+if (isset($_POST['btn-deletar-medida'])):
+	$id = mysqli_escape_string($connect, $_POST['idMedida']);
+
+	// deletando as chaves estrangeiras das bases
+	$sql = "UPDATE PerguntaMedida SET idMedida = NULL WHERE idMedida =  '".$id."'";
+	$resultado = mysqli_query($connect, $sql);
+
+	// deletando as chaves estrangeiras das bases
+	$sql = "UPDATE Medida_medida_associada SET idMedida = NULL WHERE idMedida =  '".$id."'";
+	$resultado = mysqli_query($connect, $sql);
+
+	$sql = "DELETE FROM Medida WHERE idMedida = '".$id."'";
+
+	if(mysqli_query($connect, $sql)):
+		$_SESSION['mensagem'] = "Deletado com sucesso!";
+		header('Location: medida.php?sucesso');
+	else:
+		$_SESSION['mensagem'] = "Erro ao Deletar!";
+		header('Location: medida.php?erro');
+	endif;
+endif;
+
+// deletar coleta da medida
+if (isset($_POST['btn-deletar-coleta-medida'])):
+	$id = mysqli_escape_string($connect, $_POST['idMedida_modificacoes']);
+
+	$sql = "DELETE FROM Medida_modificacoes WHERE idMedida_modificacoes = '".$id."'";
+
+	if(mysqli_query($connect, $sql)):
+		$_SESSION['mensagem'] = "Deletado com sucesso!";
+		header('Location: medida.php?sucesso');
+	else:
+		$_SESSION['mensagem'] = "Erro ao Deletar!";
+		header('Location: medida.php?erro');
+	endif;
+endif;
+
+
+
+
+
+
+
+
 
 
 

@@ -128,9 +128,46 @@ if (isset($_POST['btn-editar-pergunta'])):
 	endif;
 endif;
 
+// editar medida
+if (isset($_POST['btn-editar-medida'])):
 
+	$id = mysqli_escape_string($connect, $_POST['idMedida']);
+	$nome = mysqli_escape_string($connect, $_POST['nome']);
+	$descricao = mysqli_escape_string($connect, $_POST['descricao']);
+	$idBase = mysqli_escape_string($connect, $_POST['idBase']);
+	$unidade_padrao = mysqli_escape_string($connect, $_POST['unidade_padrao']);
+	$responsavel = mysqli_escape_string($connect, $_POST['responsavel']);
+	$tipo = mysqli_escape_string($connect, $_POST['tipo']);
 
+	$sql = "UPDATE Medida SET nome = '".$nome."', idBase = '".$idBase."', descricao = '".$descricao."', unidade_padrao = '".$unidade_padrao."', responsavel = '".$responsavel."', tipo = '".$tipo."' WHERE idMedida = '".$id."'";
 
+	if(mysqli_query($connect, $sql)):
+		$_SESSION['mensagem'] = "Atualizado com sucesso!";
+		header('Location: medida.php?sucesso');
+	else:
+		$_SESSION['mensagem'] = "Erro ao atualizar!";
+		header('Location: medida.php?erro');
+	endif;
+endif;
+
+// editar pergunta
+if (isset($_POST['btn-editar-coleta-medida'])):
+
+	$id = mysqli_escape_string($connect, $_POST['idMedida_modificacoes']);
+	$data_modificacao = mysqli_escape_string($connect, $_POST['data_modificacao']);
+	$responsavel = mysqli_escape_string($connect, $_POST['responsavel']);
+	$valor = mysqli_escape_string($connect, $_POST['valor']);
+
+	$sql = "UPDATE Medida_modificacoes SET data_modificacao = '".$data_modificacao."', responsavel = '".$responsavel."', valor = '".$valor."' WHERE idMedida_modificacoes = '".$id."'";
+
+	if(mysqli_query($connect, $sql)):
+		$_SESSION['mensagem'] = "Atualizado com sucesso!";
+		header('Location: medida.php?sucesso');
+	else:
+		$_SESSION['mensagem'] = "Erro ao atualizar!";
+		header('Location: medida.php?erro');
+	endif;
+endif;
 
 
 

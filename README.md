@@ -16,3 +16,7 @@ Correção de alguns problemas na tela de login e desenvolvimento da navbar
 **22-05-2020**
 
 Criação da maioria dos CRUDs (faltando medida e indicador somente)
+
+**22-05-2020**
+
+Criação da medida e suas relações e coleta

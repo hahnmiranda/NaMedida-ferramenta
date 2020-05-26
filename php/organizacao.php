@@ -35,6 +35,7 @@ include_once 'includes/style.php';
 	<div class="col s12 m7 push-m3">
 		<h3 class="light"> Olá <?php echo $dados['nome']; ?>,</h3>
 		<h5 class="light">Essa é a lista de suas organizações</h5>
+		<h5 class="light">Organização pode ter vários setores </h5>
 		<table class="striped responsive-table">
 			<!-- Imprimindo cabeçalhos -->
 			<thead>

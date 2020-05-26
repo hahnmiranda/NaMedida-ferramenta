@@ -28,6 +28,7 @@ $medida[] = 'Descrição';
 $medida[] = 'Unidade Padrão';
 $medida[] = 'Responsável';
 $medida[] = 'Tipo';
+$medida[] = 'Base';
 
 $medida_modificacoes[] = 'Responsável';
 $medida_modificacoes[] = 'Valor';
