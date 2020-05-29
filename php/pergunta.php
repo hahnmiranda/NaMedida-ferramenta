@@ -68,8 +68,6 @@ include_once 'includes/style.php';
 				?> 
 				<tr>
 					<!-- Imprimindo os dados da base -->
-					<td><?php echo $pergunta_dados['nome']; ?></td>
-					<td><?php echo $pergunta_dados['descricao']; ?></td>
 					<td><?php
 					// buscando nome dos projetos aos quais a base pertence
 						$id = $pergunta_dados['idObjEstrategico'];
@@ -78,11 +76,9 @@ include_once 'includes/style.php';
 						$objestrategico_nome = mysqli_fetch_array($objestrategico_nome);
 						echo $objestrategico_nome['nome'];
 					?></td>
+					<td><?php echo $pergunta_dados['nome']; ?></td>
+					<td><?php echo $pergunta_dados['descricao']; ?></td>
 					
-
-
-
-
 					<td><a href="editar-pergunta.php?idPergunta=<?php echo $pergunta_dados['idPergunta']; ?>" class="btn-floating blue"><i class="material-icons">edit</i></a></td>
 					<td><a href="#modal<?php echo $pergunta_dados['idPergunta']; ?>" class="btn-floating red modal-trigger"><i class="material-icons">delete</i></a></td>
 

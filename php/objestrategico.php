@@ -63,8 +63,6 @@ include_once 'includes/style.php';
 					while ($objestrategico_dados = mysqli_fetch_array($resultado)):
 				?> 
 				<tr>
-					<td><?php echo $objestrategico_dados['nome']; ?></td>
-					<td><?php echo $objestrategico_dados['descricao']; ?></td>
 					<td><?php
 						$id = $objestrategico_dados['idOrganizacao'];
 						$sql = "SELECT nome FROM Organizacao WHERE idOrganizacao = '$id'";
@@ -72,8 +70,9 @@ include_once 'includes/style.php';
 						$organizacao_nome = mysqli_fetch_array($organizacao_nome);
 						echo $organizacao_nome['nome'];
 					?></td>
+					<td><?php echo $objestrategico_dados['nome']; ?></td>
+					<td><?php echo $objestrategico_dados['descricao']; ?></td>
 					
-
 					<td><a href="editar-objestrategico.php?idObjEstrategico=<?php echo $objestrategico_dados['idObjEstrategico']; ?>" class="btn-floating blue"><i class="material-icons">edit</i></a></td>
 					<td><a href="#modal<?php echo $objestrategico_dados['idObjEstrategico']; ?>" class="btn-floating red modal-trigger"><i class="material-icons">delete</i></a></td>
 

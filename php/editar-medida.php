@@ -45,6 +45,36 @@ endif;
 		<h3 class="light"> Editar a medida: "<?php echo $dados_medida['nome']; ?>"</h3>
 		<h5 class="light"></h5>
 		<form class="form-editar" action="update.php" method="POST">
+			<div class="input-field col s12">
+				<div class="input-field col s12">
+					<select name="idBase" id="idBase">
+
+						<!-- Projeto atual da base aparece na tela de edição -->
+						<?php
+							$id = $dados_medida['idBase'];
+							$sql = "SELECT * FROM Base WHERE idBase = '$id'";
+							$resultado_nome_base = mysqli_query($connect, $sql);
+							$resultado_nome_base = mysqli_fetch_array($resultado_nome_base);
+						?>
+						
+						<option value="<?php echo $resultado_nome_base['idBase']; ?>" disabled><?php echo $resultado_nome_base['nome']; ?></option>
+						
+						<!-- Lista os nomes das organizações -->
+						<?php 
+							for ($i=0; $i < count($ids_base); $i++):
+								$id = $ids_base[$i];
+								$sql = "SELECT * FROM Base WHERE idBase = '$id'";
+								$resultado_nome_base = mysqli_query($connect, $sql);
+								$resultado_nome_base = mysqli_fetch_array($resultado_nome_base);
+								?>
+								<option value="<?php echo $resultado_nome_base['idBase']; ?>"><?php echo $resultado_nome_base['nome']; ?></option>
+							<?php
+							endfor;
+						?>
+					</select>
+				<label>Base</label>
+				</div>
+			</div>
 			<input type="hidden" name= "idMedida" value="<?php echo $dados_medida['idMedida']; ?>">
 			<div class="input-field col s12">
 				<input type="text" name="nome" id="nome" value="<?php echo $dados_medida['nome']?>">
@@ -80,42 +110,6 @@ endif;
 				<label>Tipo</label>
 				</div>
 			</div>
-
-			<div class="input-field col s12">
-				<div class="input-field col s12">
-					<select name="idBase" id="idBase">
-
-						<!-- Projeto atual da base aparece na tela de edição -->
-						<?php
-							$id = $dados_medida['idBase'];
-							$sql = "SELECT * FROM Base WHERE idBase = '$id'";
-							$resultado_nome_base = mysqli_query($connect, $sql);
-							$resultado_nome_base = mysqli_fetch_array($resultado_nome_base);
-						?>
-						
-						<option value="<?php echo $resultado_nome_base['idBase']; ?>" disabled><?php echo $resultado_nome_base['nome']; ?></option>
-						
-						<!-- Lista os nomes das organizações -->
-						<?php 
-							for ($i=0; $i < count($ids_base); $i++):
-								$id = $ids_base[$i];
-								$sql = "SELECT * FROM Base WHERE idBase = '$id'";
-								$resultado_nome_base = mysqli_query($connect, $sql);
-								$resultado_nome_base = mysqli_fetch_array($resultado_nome_base);
-								?>
-								<option value="<?php echo $resultado_nome_base['idBase']; ?>"><?php echo $resultado_nome_base['nome']; ?></option>
-							<?php
-							endfor;
-						?>
-					
-
-					</select>
-				<label>Base</label>
-				</div>
-			</div>
-
-
-
 			<button type="submit" name="btn-editar-medida" class="btn blue"> <i class="material-icons left">save</i> Salvar </button>
 		</form>		
 	</div>

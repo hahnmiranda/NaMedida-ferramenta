@@ -47,28 +47,6 @@ endif;
 		<form class="form-editar" action="update.php" method="POST">
 			<input type="hidden" name= "idProjeto" value="<?php echo $dados_projeto['idProjeto']; ?>">
 			<div class="input-field col s12">
-				<input type="text" name="nome" id="nome" value="<?php echo $dados_projeto['nome']?>">
-				<label for="nome">Nome</label>
-			</div>
-			<div class="input-field col s12">
-				<input type="text" name="descricao" id="descricao" value="<?php echo $dados_projeto['descricao']?>">
-				<label for="descricao">Descrição</label>
-			</div>
-			<div class="input-field col s12">
-				<input type="text" name="responsavel" id="responsavel" value="<?php echo $dados_projeto['responsavel']?>">
-				<label for="responsavel">Responsável</label>
-			</div>
-			<div class="input-field col s12">
-				<input type="text" name="data_inicio" id="data_inicio" value="<?php echo $dados_projeto['data_inicio']?>">
-				<label for="data_inicio">Data/Horário de Início</label>
-			</div>
-			<div class="input-field col s12">
-				<input type="text" name="data_termino" id="data_termino" value="<?php echo $dados_projeto['data_termino']?>">
-				<label for="data_termino">Data/Horário de Término</label>
-			</div>
-
-
-			<div class="input-field col s12">
 				<div class="input-field col s12">
 					<select name="idOrganizacao" id="idOrganizacao">
 
@@ -94,15 +72,30 @@ endif;
 							<?php
 							endfor;
 						?>
-					
-
 					</select>
 				<label>Organização</label>
 				</div>
 			</div>
-
-
-
+			<div class="input-field col s12">
+				<input type="text" name="nome" id="nome" value="<?php echo $dados_projeto['nome']?>">
+				<label for="nome">Nome</label>
+			</div>
+			<div class="input-field col s12">
+				<input type="text" name="descricao" id="descricao" value="<?php echo $dados_projeto['descricao']?>">
+				<label for="descricao">Descrição</label>
+			</div>
+			<div class="input-field col s12">
+				<input type="text" name="responsavel" id="responsavel" value="<?php echo $dados_projeto['responsavel']?>">
+				<label for="responsavel">Responsável</label>
+			</div>
+			<div class="input-field col s12">
+				<input type="text" name="data_inicio" id="data_inicio" value="<?php echo $dados_projeto['data_inicio']?>">
+				<label for="data_inicio">Data/Horário de Início</label>
+			</div>
+			<div class="input-field col s12">
+				<input type="text" name="data_termino" id="data_termino" value="<?php echo $dados_projeto['data_termino']?>">
+				<label for="data_termino">Data/Horário de Término</label>
+			</div>
 			<button type="submit" name="btn-editar-projeto" class="btn blue"> <i class="material-icons left">save</i> Salvar </button>
 		</form>		
 	</div>

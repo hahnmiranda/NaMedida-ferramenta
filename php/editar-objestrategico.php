@@ -47,16 +47,6 @@ endif;
 		<form class="form-editar" action="update.php" method="POST">
 			<input type="hidden" name= "idObjEstrategico" value="<?php echo $dados_objestrategico['idObjEstrategico']; ?>">
 			<div class="input-field col s12">
-				<input type="text" name="nome" id="nome" value="<?php echo $dados_objestrategico['nome']?>">
-				<label for="nome">Nome</label>
-			</div>
-			<div class="input-field col s12">
-				<input type="text" name="descricao" id="descricao" value="<?php echo $dados_objestrategico['descricao']?>">
-				<label for="descricao">Descrição</label>
-			</div>
-
-
-			<div class="input-field col s12">
 				<div class="input-field col s12">
 					<select name="idOrganizacao" id="idOrganizacao">
 
@@ -88,9 +78,14 @@ endif;
 				<label>Organização</label>
 				</div>
 			</div>
-
-
-
+			<div class="input-field col s12">
+				<input type="text" name="nome" id="nome" value="<?php echo $dados_objestrategico['nome']?>">
+				<label for="nome">Nome</label>
+			</div>
+			<div class="input-field col s12">
+				<input type="text" name="descricao" id="descricao" value="<?php echo $dados_objestrategico['descricao']?>">
+				<label for="descricao">Descrição</label>
+			</div>
 			<button type="submit" name="btn-editar-objestrategico" class="btn blue"> <i class="material-icons left">save</i> Salvar </button>
 		</form>		
 	</div>

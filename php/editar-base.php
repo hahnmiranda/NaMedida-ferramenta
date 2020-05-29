@@ -45,17 +45,6 @@ endif;
 		<h3 class="light"> Editar <?php echo $dados_base['nome']; ?></h3>
 		<h5 class="light"></h5>
 		<form class="form-editar" action="update.php" method="POST">
-			<input type="hidden" name= "idBase" value="<?php echo $dados_base['idBase']; ?>">
-			<div class="input-field col s12">
-				<input type="text" name="nome" id="nome" value="<?php echo $dados_base['nome']?>">
-				<label for="nome">Nome</label>
-			</div>
-			<div class="input-field col s12">
-				<input type="text" name="descricao" id="descricao" value="<?php echo $dados_base['descricao']?>">
-				<label for="descricao">Descrição</label>
-			</div>
-
-
 			<div class="input-field col s12">
 				<div class="input-field col s12">
 					<select name="idProjeto" id="idProjeto">
@@ -82,15 +71,19 @@ endif;
 							<?php
 							endfor;
 						?>
-					
-
 					</select>
 				<label>Projeto</label>
 				</div>
 			</div>
-
-
-
+			<input type="hidden" name= "idBase" value="<?php echo $dados_base['idBase']; ?>">
+			<div class="input-field col s12">
+				<input type="text" name="nome" id="nome" value="<?php echo $dados_base['nome']?>">
+				<label for="nome">Nome</label>
+			</div>
+			<div class="input-field col s12">
+				<input type="text" name="descricao" id="descricao" value="<?php echo $dados_base['descricao']?>">
+				<label for="descricao">Descrição</label>
+			</div>
 			<button type="submit" name="btn-editar-base" class="btn blue"> <i class="material-icons left">save</i> Salvar </button>
 		</form>		
 	</div>

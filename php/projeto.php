@@ -63,6 +63,13 @@ include_once 'includes/style.php';
 					while ($projeto_dados = mysqli_fetch_array($resultado)):
 				?> 
 				<tr>
+					<td><?php
+						$id = $projeto_dados['idOrganizacao'];
+						$sql = "SELECT nome FROM Organizacao WHERE idOrganizacao = '$id'";
+						$organizacao_nome = mysqli_query($connect, $sql);
+						$organizacao_nome = mysqli_fetch_array($organizacao_nome);
+						echo $organizacao_nome['nome'];
+					?></td>
 					<td><?php echo $projeto_dados['nome']; ?></td>
 					<td><?php echo $projeto_dados['descricao']; ?></td>
 					<td><?php echo $projeto_dados['responsavel']; ?></td>
@@ -80,18 +87,7 @@ include_once 'includes/style.php';
 							echo $projeto_dados['data_termino'];		
 						}
 					?></td>
-					<td><?php
-						$id = $projeto_dados['idOrganizacao'];
-						$sql = "SELECT nome FROM Organizacao WHERE idOrganizacao = '$id'";
-						$organizacao_nome = mysqli_query($connect, $sql);
-						$organizacao_nome = mysqli_fetch_array($organizacao_nome);
-						echo $organizacao_nome['nome'];
-					?></td>
 					
-
-
-
-
 					<td><a href="editar-projeto.php?idProjeto=<?php echo $projeto_dados['idProjeto']; ?>" class="btn-floating blue"><i class="material-icons">edit</i></a></td>
 					<td><a href="#modal<?php echo $projeto_dados['idProjeto']; ?>" class="btn-floating red modal-trigger"><i class="material-icons">delete</i></a></td>
 

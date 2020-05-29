@@ -69,6 +69,14 @@ include_once 'includes/style.php';
 				?> 
 				<tr> 
 					<!-- Imprimindo os dados da base -->
+					<td><?php
+					// buscando nome dos projetos aos quais a base pertence
+						$id = $medida_dados['idBase'];
+						$sql = "SELECT nome FROM Base WHERE idBase = '$id'";
+						$base_nome = mysqli_query($connect, $sql);
+						$base_nome = mysqli_fetch_array($base_nome);
+						echo $base_nome['nome'];
+					?></td>
 					<td><?php echo $medida_dados['nome']; ?></td>
 					<td><?php echo $medida_dados['descricao']; ?></td>
 					<td><?php echo $medida_dados['unidade_padrao']; ?></td>
@@ -79,14 +87,6 @@ include_once 'includes/style.php';
 						else:
 							echo "Derivada";
 						endif;
-					?></td>
-					<td><?php
-					// buscando nome dos projetos aos quais a base pertence
-						$id = $medida_dados['idBase'];
-						$sql = "SELECT nome FROM Base WHERE idBase = '$id'";
-						$base_nome = mysqli_query($connect, $sql);
-						$base_nome = mysqli_fetch_array($base_nome);
-						echo $base_nome['nome'];
 					?></td>
 					<td><a href="vinculo-medida.php?idMedida=<?php echo $medida_dados['idMedida']; ?>" class="btn-floating green"><i class="material-icons">sync</i></a></td>
 					

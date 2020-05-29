@@ -20,3 +20,7 @@ Criação da maioria dos CRUDs (faltando medida e indicador somente)
 **22-05-2020**
 
 Criação da medida e suas relações e coleta
+
+**29-05-2020**
+
+Ajustes das colunas das tabelas

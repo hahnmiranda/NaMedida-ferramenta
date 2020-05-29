@@ -36,28 +36,6 @@ include_once 'includes/style.php';
 		<h3 class="light"> Novo Projeto </h3>
 		<form action="create.php" method="POST">
 			<div class="input-field col s12">
-				<input type="text" name="nome" id="nome">
-				<label for="nome">Nome</label>
-			</div>
-			<div class="input-field col s12">
-				<input type="text" name="descricao" id="descricao">
-				<label for="descricao">Descrição</label>
-			</div>
-			<div class="input-field col s12">
-				<input type="text" name="responsavel" id="responsavel">
-				<label for="responsavel">Responsável</label>
-			</div>
-			<div class="input-field col s12">
-				<input type="text" name="data_inicio" id="data_inicio">
-				<label for="data_inicio">Data/Horário de Início</label>
-			</div>
-			<div class="input-field col s12">
-				<input type="text" name="data_termino" id="data_termino">
-				<label for="data_termino">Data/Horário do Término</label>
-			</div>
-
-
-			<div class="input-field col s12">
 				<div class="input-field col s12">
 					<select name="idOrganizacao" id="idOrganizacao">
 						<option value="" disabled selected>Escolha uma Organização</option>
@@ -78,9 +56,26 @@ include_once 'includes/style.php';
 				<label>Organização</label>
 				</div>
 			</div>
-
-
-
+			<div class="input-field col s12">
+				<input type="text" name="nome" id="nome">
+				<label for="nome">Nome</label>
+			</div>
+			<div class="input-field col s12">
+				<input type="text" name="descricao" id="descricao">
+				<label for="descricao">Descrição</label>
+			</div>
+			<div class="input-field col s12">
+				<input type="text" name="responsavel" id="responsavel">
+				<label for="responsavel">Responsável</label>
+			</div>
+			<div class="input-field col s12">
+				<input type="text" name="data_inicio" id="data_inicio">
+				<label for="data_inicio">Data/Horário de Início</label>
+			</div>
+			<div class="input-field col s12">
+				<input type="text" name="data_termino" id="data_termino">
+				<label for="data_termino">Data/Horário do Término</label>
+			</div>
 			<button type="submit" name="btn-cadastrar-projeto" class="btn waves-effect waves-light blue"><i class="material-icons left">save</i> Cadastrar </button>
 			<a href="dashboard.php" class="btn green espaco-botao-dashboard-cadastrar"> <i class="material-icons left">dashboard</i>dashboard </a>
 		</form>		
