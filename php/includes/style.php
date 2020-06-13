@@ -50,4 +50,10 @@
 	.vincular-pergunta-ou-medida-botao {
 		margin-top: 15px;
 	}
+	.botao-tela-dashboard {
+		margin-top: 30px;
+	}
+	.titulo-filtro-dashboard {
+		margin-top: 30px;
+	}
 </style>

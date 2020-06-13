@@ -33,15 +33,27 @@ include_once 'includes/style.php';
 
 <div class="row">
 	<div class="col s12 m7 push-m3">
-		<h3 class="light"> Olá <?php echo $dados['nome']; ?>,</h3>
-		<h5 class="light"> Veja abaixo a quantidade de registros que você possui</h5>
-		<table class="striped responsive-table">
+		<h3 class="light"> Olá <?php echo $dados['nome']; ?></h3>
+		
+		<?php
+			$id = $dados['idUsuario'];
+			$sql = "SELECT * FROM Organizacao WHERE idUsuario = '$id'";	
+			
+			$resultado = mysqli_query($connect, $sql);
+			
+			if (mysqli_num_rows($resultado) > 0):
+		?>
+		
+		<h5 class="light"> Você pode filtrar seus indicadores e medidas pelas entidades abaixo: </h5>
+		<h5 class="titulo-filtro-dashboard"> Organizações </h5>
+
+		<table class="striped responsive-table table-filtrar-dashboard">
 			<!-- Imprimindo cabeçalhos -->
 			<thead>
 				<tr>
 				<?php
-					$contador = count($dashboard);
-					foreach ($dashboard as $key) {
+					$contador = count($organizacao);
+					foreach ($organizacao as $key) {
 						echo "<th>$key</th>";
 					}
 				?>
@@ -49,24 +61,78 @@ include_once 'includes/style.php';
 			</thead>
 			
 			<tbody>
-				<td> <?php echo count($ids_organizacao) ?></td>
-				<td> <?php echo count($ids_objestrategico) ?> </td>
-				<td> <?php echo count($ids_pergunta) ?> </td>
-				<td> <?php echo count($ids_projeto) ?> </td>
-				<td> <?php echo count($ids_base) ?> </td>
-				<td> <?php echo count($ids_medida) ?> </td>
-				<td>  <?php echo count($ids_indicador) ?></td>
+				<?php 
+
+					while ($organizacao_dados = mysqli_fetch_array($resultado)):
+				?> 
+				<tr>
+					<td><?php echo $organizacao_dados['nome']; ?></td>
+					<td><?php echo $organizacao_dados['descricao']; ?></td>
+					<td><a title="Filtrar medidas" href="filtrar-organizacao.php?idOrganizacao=<?php echo $organizacao_dados['idOrganizacao']; ?>" class="btn-floating green"><i class="material-icons">filter_list</i></a></td>
+				</tr>
+				<?php 
+				
+				endwhile; 
+				
+				endif;
+				?>
 			</tbody>
 		</table>
-		<br>
+		
+		<?php
+		if (count($ids_setor) > 0):
+			$sql = "SELECT * FROM Setor WHERE ";	
+			
+			for($r=0; $r < count($ids_setor); $r++):
+				$id = $ids_setor[$r];
+				if($r == 0):
+					$sql = $sql."idSetor = '$id'";
+				else:
+					$sql = $sql." OR idSetor = '$id'";
+				endif;
+			endfor;
+			
+			$resultado = mysqli_query($connect, $sql);
+		?>
+		
+		<h5 class="titulo-filtro-dashboard"> Setores </h5>
 
-		<a class='dropdown-button btn waves-effect waves-light blue' href='#' data-target='dropdown2'>adicionar registro<i class="material-icons left">add</i></a>
+		<table class="striped responsive-table table-filtrar-dashboard">
+			<!-- Imprimindo cabeçalhos -->
+			<thead>
+				<tr>
+				<th>Nome</th>
+				<th>Descrição</th>
+				</tr>
+			</thead>
+			
+			<tbody>
+				<?php 
 
-		<a class="waves-effect right blue btn" href="perfil.php"><i class="material-icons left">person_outline</i>perfil</a>
+					while ($setor_dados = mysqli_fetch_array($resultado)):
+				?> 
+				<tr>
+					<td><?php echo $setor_dados['nome']; ?></td>
+					<td><?php echo $setor_dados['descricao']; ?></td>
+					<td><a title="Filtrar medidas" href="filtrar-setor.php?idSetor=<?php echo $setor_dados['idSetor']; ?>" class="btn-floating green"><i class="material-icons">filter_list</i></a></td>
+				</tr>
+				<?php 
+				
+				endwhile; 
+				
+				endif;
+				?>
+			</tbody>
+		</table>
+		
+		<a class='dropdown-button btn waves-effect waves-light blue botao-tela-dashboard' href='#' data-target='dropdown2'>adicionar registro<i class="material-icons left">add</i></a>
+
+		<a class="waves-effect right blue btn botao-tela-dashboard" href="perfil.php"><i class="material-icons left">person_outline</i>perfil</a>
 
 		<!-- Botão dashboard -->
 		  <ul id='dropdown2' class='dropdown-content'>
 		    <li><a href="adicionar-organizacao.php">Organizações</a></li>
+			<li><a href="adicionar-setor.php">Setor</a></li>
 		    <li><a href="adicionar-objestrategico.php">Objetivos Estratégicos</a></li>
 		    <li><a href="adicionar-pergunta.php">Perguntas</a></li>
 		    <li><a href="adicionar-projeto.php">Projetos</a></li>

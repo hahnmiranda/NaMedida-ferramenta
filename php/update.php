@@ -49,6 +49,26 @@ if (isset($_POST['btn-editar-organizacao'])):
 	endif;
 endif;
 
+// editar setor
+if (isset($_POST['btn-editar-setor'])):
+
+	$id = mysqli_escape_string($connect, $_POST['idSetor']);
+	$nome = mysqli_escape_string($connect, $_POST['nome']);
+	$descricao = mysqli_escape_string($connect, $_POST['descricao']);
+	$responsavel = mysqli_escape_string($connect, $_POST['responsavel']);
+	$idOrganizacao = mysqli_escape_string($connect, $_POST['idOrganizacao']);
+
+	$sql = "UPDATE Setor SET nome = '".$nome."', idOrganizacao = '".$idOrganizacao."', descricao = '".$descricao."', responsavel = '".$responsavel."' WHERE idSetor = '".$id."'";
+
+	if(mysqli_query($connect, $sql)):
+		$_SESSION['mensagem'] = "Atualizado com sucesso!";
+		header('Location: setor.php?sucesso');
+	else:
+		$_SESSION['mensagem'] = "Erro ao atualizar!";
+		header('Location: setor.php?erro');
+	endif;
+endif;
+
 // editar projeto
 if (isset($_POST['btn-editar-projeto'])):
 
@@ -58,9 +78,9 @@ if (isset($_POST['btn-editar-projeto'])):
 	$responsavel = mysqli_escape_string($connect, $_POST['responsavel']);
 	$data_inicio = mysqli_escape_string($connect, $_POST['data_inicio']);
 	$data_termino = mysqli_escape_string($connect, $_POST['data_termino']);
-	$idOrganizacao = mysqli_escape_string($connect, $_POST['idOrganizacao']);
+	$idSetor = mysqli_escape_string($connect, $_POST['idSetor']);
 
-	$sql = "UPDATE Projeto SET nome = '".$nome."', idOrganizacao = '".$idOrganizacao."', descricao = '".$descricao."', responsavel = '".$responsavel."', data_inicio = '".$data_inicio."', data_termino = '".$data_termino."' WHERE idProjeto = '".$id."'";
+	$sql = "UPDATE Projeto SET nome = '".$nome."', idSetor = '".$idSetor."', descricao = '".$descricao."', responsavel = '".$responsavel."', data_inicio = '".$data_inicio."', data_termino = '".$data_termino."' WHERE idProjeto = '".$id."'";
 
 	if(mysqli_query($connect, $sql)):
 		$_SESSION['mensagem'] = "Atualizado com sucesso!";

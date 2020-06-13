@@ -48,32 +48,32 @@ endif;
 			<input type="hidden" name= "idProjeto" value="<?php echo $dados_projeto['idProjeto']; ?>">
 			<div class="input-field col s12">
 				<div class="input-field col s12">
-					<select name="idOrganizacao" id="idOrganizacao">
+					<select name="idSetor" id="idSetor">
 
 						<!-- Organizacao atual do projeto aparece na tela de edição -->
 						<?php
-							$id = $dados_projeto['idOrganizacao'];
-							$sql = "SELECT * FROM Organizacao WHERE idOrganizacao = '$id'";
-							$resultado_nome_organizacao = mysqli_query($connect, $sql);
-							$resultado_nome_organizacao = mysqli_fetch_array($resultado_nome_organizacao);
+							$id = $dados_projeto['idSetor'];
+							$sql = "SELECT * FROM Setor WHERE idSetor = '$id'";
+							$resultado_nome_setor = mysqli_query($connect, $sql);
+							$resultado_nome_setor = mysqli_fetch_array($resultado_nome_setor);
 						?>
 						
-						<option value="<?php echo $resultado_nome_organizacao['idOrganizacao']; ?>" disabled><?php echo $resultado_nome_organizacao['nome']; ?></option>
+						<option value="<?php echo $resultado_nome_setor['idSetor']; ?>" disabled><?php echo $resultado_nome_setor['nome']; ?></option>
 						
 						<!-- Lista os nomes das organizações -->
 						<?php 
-							for ($i=0; $i < count($ids_organizacao); $i++):
-								$id = $ids_organizacao[$i];
-								$sql = "SELECT * FROM Organizacao WHERE idOrganizacao = '$id'";
-								$resultado_nome_organizacao = mysqli_query($connect, $sql);
-								$resultado_nome_organizacao = mysqli_fetch_array($resultado_nome_organizacao);
+							for ($i=0; $i < count($ids_setor); $i++):
+								$id = $ids_setor[$i];
+								$sql = "SELECT * FROM Setor WHERE idSetor = '$id'";
+								$resultado_nome_setor = mysqli_query($connect, $sql);
+								$resultado_nome_setor = mysqli_fetch_array($resultado_nome_setor);
 								?>
-								<option value="<?php echo $resultado_nome_organizacao['idOrganizacao']; ?>"><?php echo $resultado_nome_organizacao['nome']; ?></option>
+								<option value="<?php echo $resultado_nome_setor['idSetor']; ?>"><?php echo $resultado_nome_setor['nome']; ?></option>
 							<?php
 							endfor;
 						?>
 					</select>
-				<label>Organização</label>
+				<label>Setor</label>
 				</div>
 			</div>
 			<div class="input-field col s12">

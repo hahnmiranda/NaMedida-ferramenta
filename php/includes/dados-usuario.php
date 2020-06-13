@@ -69,10 +69,38 @@ for ($i=0; $i < count($ids_organizacao); $i++) {
 	}
 }
 
+// setor
+$ids_setor = array();
+for ($i=0; $i < count($ids_organizacao); $i++) { 
+	$sql = "SELECT * FROM setor WHERE idOrganizacao = '$ids_organizacao[$i]'";
+	$resultado = mysqli_query($connect, $sql);
+	if (mysqli_num_rows($resultado) > 0) {
+		// obtendo todos os ids dos objetivos estrategicos das organizacoes
+		$count_while = 0;
+		while ($setor_dados = mysqli_fetch_array($resultado)) {
+			if ($count_while == 0) {
+				array_push($ids_setor, $setor_dados['idSetor']);
+				$count_while++;
+			} else {
+				$count_while++;
+				$cont_comparador = 0;
+				for ($r=0; $r < count($ids_setor); $r++) { 
+					if ($ids_setor[$r] == $setor_dados['idSetor']) {
+						$cont_comparador++;
+					}
+				}
+				if ($cont_comparador == 0) {
+					array_push($ids_setor, $setor_dados['idSetor']);
+				}
+			}
+		}	
+	}
+}
+
 // projeto
 $ids_projeto = array();
-for ($i=0; $i < count($ids_organizacao); $i++) { 
-	$sql = "SELECT * FROM Projeto WHERE idOrganizacao = '$ids_organizacao[$i]'";
+for ($i=0; $i < count($ids_setor); $i++) { 
+	$sql = "SELECT * FROM Projeto WHERE idSetor = '$ids_setor[$i]'";
 	$resultado = mysqli_query($connect, $sql);
 	if (mysqli_num_rows($resultado) > 0) {
 		// obtendo todos os ids dos objetivos estrategicos das organizacoes

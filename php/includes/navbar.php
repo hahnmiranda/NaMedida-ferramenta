@@ -19,6 +19,7 @@
 						    <li><a href="#!"><i class="material-icons">file_upload</i>Exportar</a></li>
 						    <li class="divider" tabindex="-1"></li>
 						    <li><a href="organizacao.php">Organizações</a></li>
+							<li><a href="setor.php">Setor</a></li>
 						    <li><a href="objestrategico.php">Objetivos Estratégicos</a></li>
 						    <li><a href="pergunta.php">Perguntas</a></li>
 						    <li><a href="projeto.php">Projetos</a></li>

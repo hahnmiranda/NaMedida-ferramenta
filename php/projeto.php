@@ -51,11 +51,11 @@ include_once 'includes/style.php';
 			<tbody>
 				<?php
 					$sql = "SELECT * FROM Projeto WHERE ";
-					for ($i=0; $i < count($ids_organizacao); $i++) {
+					for ($i=0; $i < count($ids_setor); $i++) {
 						if ($i == 0):
-							$sql = $sql."idOrganizacao = '$ids_organizacao[$i]'";
+							$sql = $sql."idSetor = '$ids_setor[$i]'";
 						else:
-							$sql = $sql." or idOrganizacao = '$ids_organizacao[$i]'";
+							$sql = $sql." or idSetor = '$ids_setor[$i]'";
 						endif;
 					}
 					$resultado = mysqli_query($connect, $sql);
@@ -64,11 +64,11 @@ include_once 'includes/style.php';
 				?> 
 				<tr>
 					<td><?php
-						$id = $projeto_dados['idOrganizacao'];
-						$sql = "SELECT nome FROM Organizacao WHERE idOrganizacao = '$id'";
-						$organizacao_nome = mysqli_query($connect, $sql);
-						$organizacao_nome = mysqli_fetch_array($organizacao_nome);
-						echo $organizacao_nome['nome'];
+						$id = $projeto_dados['idSetor'];
+						$sql = "SELECT nome FROM Setor WHERE idSetor = '$id'";
+						$setor_nome = mysqli_query($connect, $sql);
+						$setor_nome = mysqli_fetch_array($setor_nome);
+						echo $setor_nome['nome'];
 					?></td>
 					<td><?php echo $projeto_dados['nome']; ?></td>
 					<td><?php echo $projeto_dados['descricao']; ?></td>

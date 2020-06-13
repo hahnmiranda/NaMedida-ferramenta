@@ -6,12 +6,17 @@
 $usuario[] = 'Nome';
 $usuario[] = 'Login';
 
-$projeto[] = 'Organização';
+$projeto[] = 'Setor';
 $projeto[] = 'Nome';
 $projeto[] = 'Descricao';
 $projeto[] = 'Responsável';
 $projeto[] = 'Data de Início';
 $projeto[] = 'Data de Término';
+
+$setor[] = 'Organização';
+$setor[] = 'Nome';
+$setor[] = 'Descrição';
+$setor[] = 'Responsável';
 
 $pergunta[] = 'Objetivo Estratégico';
 $pergunta[] = 'Pergunta';

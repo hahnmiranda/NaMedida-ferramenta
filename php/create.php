@@ -26,6 +26,25 @@ if (isset($_POST['btn-cadastrar-organizacao'])):
 	endif;
 endif;
 
+// cadastrar setor
+if (isset($_POST['btn-cadastrar-setor'])):
+
+	$nome = mysqli_escape_string($connect, $_POST['nome']);
+	$descricao = mysqli_escape_string($connect, $_POST['descricao']);
+	$responsavel = mysqli_escape_string($connect, $_POST['responsavel']);
+	$idOrganizacao = mysqli_escape_string($connect, $_POST['idOrganizacao']);
+
+	$sql = "INSERT INTO setor(nome, descricao, responsavel, idOrganizacao) VALUES ('$nome', '$descricao', '$responsavel', '$idOrganizacao')";
+
+	if(mysqli_query($connect, $sql)):
+		$_SESSION['mensagem'] = "Cadastrado com sucesso!";
+		header('Location: setor.php?sucesso');
+	else:
+		$_SESSION['mensagem'] = "Erro ao cadastrar!";
+		header('Location: setor.php?erro');
+	endif;
+endif;
+
 // cadastrar projeto
 if (isset($_POST['btn-cadastrar-projeto'])):
 
@@ -34,9 +53,9 @@ if (isset($_POST['btn-cadastrar-projeto'])):
 	$responsavel = mysqli_escape_string($connect, $_POST['responsavel']);
 	$data_inicio = mysqli_escape_string($connect, $_POST['data_inicio']);
 	$data_termino = mysqli_escape_string($connect, $_POST['data_termino']);
-	$idOrganizacao = mysqli_escape_string($connect, $_POST['idOrganizacao']);
+	$idOrganizacao = mysqli_escape_string($connect, $_POST['idSetor']);
 
-	$sql = "INSERT INTO Projeto(nome, descricao, responsavel, data_inicio, data_termino, idOrganizacao) VALUES ('$nome', '$descricao', '$responsavel', '$data_inicio', '$data_termino', '$idOrganizacao')";
+	$sql = "INSERT INTO Projeto(nome, descricao, responsavel, data_inicio, data_termino, idSetor) VALUES ('$nome', '$descricao', '$responsavel', '$data_inicio', '$data_termino', '$idSetor')";
 
 	if(mysqli_query($connect, $sql)):
 		$_SESSION['mensagem'] = "Cadastrado com sucesso!";

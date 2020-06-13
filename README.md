@@ -24,3 +24,7 @@ Criação da medida e suas relações e coleta
 **29-05-2020**
 
 Ajustes das colunas das tabelas
+
+**13-06-2020**
+
+Adição dos filtros de organização e setor, juntamente com a criação da tabela setor

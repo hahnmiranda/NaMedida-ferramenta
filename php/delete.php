@@ -26,6 +26,25 @@ if (isset($_POST['btn-deletar-organizacao'])):
 	endif;
 endif;
 
+// deletar setor
+if (isset($_POST['btn-deletar-setor'])):
+	$id = mysqli_escape_string($connect, $_POST['idSetor']);
+
+	// deletando as chaves estrangeiras das bases
+	$sql = "UPDATE Projeto SET idSetor = NULL WHERE idSetor =  '".$id."'";
+	$resultado = mysqli_query($connect, $sql);
+
+	$sql = "DELETE FROM Setor WHERE idSetor = '".$id."'";
+
+	if(mysqli_query($connect, $sql)):
+		$_SESSION['mensagem'] = "Deletado com sucesso!";
+		header('Location: setor.php?sucesso');
+	else:
+		$_SESSION['mensagem'] = "Erro ao Deletar!";
+		header('Location: setor.php?erro');
+	endif;
+endif;
+
 // deletar projeto
 if (isset($_POST['btn-deletar-projeto'])):
 	$id = mysqli_escape_string($connect, $_POST['idProjeto']);
