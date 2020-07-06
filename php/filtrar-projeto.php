@@ -30,86 +30,43 @@ include_once 'includes/navbar.php';
 include_once 'includes/style.php';
 
 // select
-if(isset($_GET['idOrganizacao'])):
-	$id = mysqli_escape_string($connect, $_GET['idOrganizacao']);
+if(isset($_GET['idProjeto'])):
+	$id = mysqli_escape_string($connect, $_GET['idProjeto']);
 	
-	$sql = "SELECT * FROM setor WHERE idOrganizacao = '$id'";
-	$resultado = mysqli_query($connect, $sql);
+	$sql = "SELECT * FROM base WHERE idProjeto = '$id'";
 	
-	$ids_setores = array();
-	$ids_projetos = array();
 	$ids_bases = array();
 	$ids_medidas = array();
 	
-	if(mysqli_num_rows($resultado) > 0):
+	$resultado = mysqli_query($connect, $sql);
+	
+	if (mysqli_num_rows($resultado) > 0):
 		
-		while($setores_dados = mysqli_fetch_array($resultado)):
-			$ids_setores[] = $setores_dados['idSetor'];
+		while ($bases_dados = mysqli_fetch_array($resultado)):
+			$ids_bases[] = $bases_dados['idBase'];
 		endwhile;
-		
-		$sql = "SELECT * FROM projeto WHERE ";
-		for($i = 0; $i < count($ids_setores); $i++):
+
+		$sql = "SELECT * FROM medida WHERE ";
+		for($i = 0; $i < count($ids_bases); $i++):
 			if($i == 0):
-				$id = $ids_setores[$i];
-				$sql = $sql."idSetor = '$id'";
+				$id = $ids_bases[$i];
+				$sql = $sql."idBase = '$id'";
 			else:
-				$id = $ids_setores[$i];
-				$sql = $sql." OR idSetor = '$id'";
+				$id = $ids_bases[$i];
+				$sql = $sql." OR idBase = '$id'";
 			endif;
 		endfor;
-	
+		
 		$resultado = mysqli_query($connect, $sql);
-	
+		
 		if (mysqli_num_rows($resultado) > 0):
 			
-			while ($projetos_dados = mysqli_fetch_array($resultado)):
-				$ids_projetos[] = $projetos_dados['idProjeto'];
+			while($medidas_dados = mysqli_fetch_array($resultado)):
+				$ids_medidas[] = $medidas_dados['idMedida'];
 			endwhile;
-			
-			
-			$sql = "SELECT * FROM base WHERE ";
-			for($i = 0; $i < count($ids_projetos); $i++):
-				if($i == 0):
-					$id = $ids_projetos[$i];
-					$sql = $sql."idProjeto = '$id'";
-				else:
-					$id = $ids_projetos[$i];
-					$sql = $sql." OR idProjeto = '$id'";
-				endif;
-			endfor;
-			
-			$resultado = mysqli_query($connect, $sql);
-			
-			if (mysqli_num_rows($resultado) > 0):
-				
-				while ($bases_dados = mysqli_fetch_array($resultado)):
-					$ids_bases[] = $bases_dados['idBase'];
-				endwhile;
-
-				$sql = "SELECT * FROM medida WHERE ";
-				for($i = 0; $i < count($ids_bases); $i++):
-					if($i == 0):
-						$id = $ids_bases[$i];
-						$sql = $sql."idBase = '$id'";
-					else:
-						$id = $ids_bases[$i];
-						$sql = $sql." OR idBase = '$id'";
-					endif;
-				endfor;
-				
-				$resultado = mysqli_query($connect, $sql);
-				
-				if (mysqli_num_rows($resultado) > 0):
-					
-					while($medidas_dados = mysqli_fetch_array($resultado)):
-						$ids_medidas[] = $medidas_dados['idMedida'];
-					endwhile;
-
-				endif;
-				
-			endif;
 
 		endif;
+		
 	endif;
 	
 endif;
@@ -118,7 +75,7 @@ endif;
 <div class="row">
 	<div class="col s12 m9 push-m2">
 	<?php if(count($ids_medidas) > 0): ?>
-		<h3 class="light"> Esta é sua lista de medida(s) filtrada pela organização</h3>
+		<h3 class="light"> Esta é sua lista de medida(s) filtrada pelo projeto</h3>
 		<h5 class="light"></h5>
 		<table class="striped responsive-table">
 			<!-- Imprimindo cabeçalhos -->
@@ -169,6 +126,7 @@ endif;
 					<td><?php echo $medidas_dados['descricao']; ?></td>
 					<td><?php echo $medidas_dados['unidade_padrao']; ?></td>
 					<td><?php echo $medidas_dados['responsavel']; ?></td>
+					
 					<td><a href="vinculo-medida.php?idMedida=<?php echo $medidas_dados['idMedida']; ?>" class="btn-floating green"><i class="material-icons">sync</i></a></td>
 					
 					<td><a href="lista-coleta-medida.php?idMedida=<?php echo $medidas_dados['idMedida']; ?>" class="btn-floating orange"><i class="material-icons">remove_red_eye</i></a></td>
@@ -197,7 +155,7 @@ endif;
 				endif;
 				else:
 				?>
-				<h3 class="light"> Nenhuma medida encontrada para esta organização</h3>
+				<h3 class="light"> Nenhuma medida encontrada para este projeto</h3>
 				<?php
 				endif;
 				?>

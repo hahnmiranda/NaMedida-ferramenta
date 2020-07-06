@@ -33,7 +33,7 @@ include_once 'includes/style.php';
 if(isset($_GET['idMedida'])):
 	$id = mysqli_escape_string($connect, $_GET['idMedida']);
 
-	$sql = "SELECT * FROM Medida WHERE idMedida = '$id'";
+	$sql = "SELECT * FROM medida WHERE idMedida = '$id'";
 	$resultado = mysqli_query($connect, $sql);
 	$dados_medida = mysqli_fetch_array($resultado);
 endif;
@@ -59,14 +59,14 @@ endif;
 				<?php
 					// mysqli_num_rows
 					$id = $dados_medida['idMedida'];
-					$sql = "SELECT * FROM Medida_modificacoes WHERE idMedida = '$id'";
+					$sql = "SELECT * FROM medida_modificacoes WHERE idMedida = '$id'";
 					$resultado = mysqli_query($connect, $sql);
 					if (mysqli_num_rows($resultado) == 0) {
 						echo "<tr><td>Não foi realizada nenhuma coleta para a medida. </td><td>-</td><td>-</td></tr>";
 					}
 					while ($coleta_medida = mysqli_fetch_array($resultado)) {
 						$id = $coleta_medida['idMedida_modificacoes'];
-						$sql = "SELECT * FROM Medida_modificacoes WHERE idMedida_modificacoes = '$id'";
+						$sql = "SELECT * FROM medida_modificacoes WHERE idMedida_modificacoes = '$id'";
 						$resultado2 = mysqli_query($connect, $sql);
 						$modificacoes_dados = mysqli_fetch_array($resultado2);
 						?> <tr><td>

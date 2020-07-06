@@ -34,7 +34,6 @@ $medida[] = 'Nome';
 $medida[] = 'Descrição';
 $medida[] = 'Unidade Padrão';
 $medida[] = 'Responsável';
-$medida[] = 'Tipo';
 
 $medida_modificacoes[] = 'Responsável';
 $medida_modificacoes[] = 'Valor';

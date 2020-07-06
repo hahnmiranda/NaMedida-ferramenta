@@ -44,7 +44,7 @@ include_once 'includes/style.php';
 						<?php 
 							for ($i=0; $i < count($ids_objestrategico); $i++):
 								$id = $ids_objestrategico[$i];
-								$sql = "SELECT * FROM ObjEstrategico WHERE idObjEstrategico = '$id'";
+								$sql = "SELECT * FROM objestrategico WHERE idObjEstrategico = '$id'";
 								$resultado_nome_objestrategico = mysqli_query($connect, $sql);
 								$resultado_nome_objestrategico = mysqli_fetch_array($resultado_nome_objestrategico);
 								?>

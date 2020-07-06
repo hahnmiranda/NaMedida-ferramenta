@@ -33,7 +33,7 @@ include_once 'includes/style.php';
 if(isset($_GET['idOrganizacao'])):
 	$id = mysqli_escape_string($connect, $_GET['idOrganizacao']);
 
-	$sql = "SELECT * FROM Organizacao WHERE idOrganizacao = '$id'";
+	$sql = "SELECT * FROM organizacao WHERE idOrganizacao = '$id'";
 	$resultado = mysqli_query($connect, $sql);
 	$dados_organizacao = mysqli_fetch_array($resultado);
 endif;

@@ -44,7 +44,7 @@ include_once 'includes/style.php';
 						<?php 
 							for ($i=0; $i < count($ids_base); $i++):
 								$id = $ids_base[$i];
-								$sql = "SELECT * FROM Base WHERE idBase = '$id'";
+								$sql = "SELECT * FROM base WHERE idBase = '$id'";
 								$resultado_nome_base = mysqli_query($connect, $sql);
 								$resultado_nome_base = mysqli_fetch_array($resultado_nome_base);
 								?>
@@ -72,7 +72,8 @@ include_once 'includes/style.php';
 				<input type="text" name="responsavel" id="responsavel">
 				<label for="responsavel">Responsável</label>
 			</div>
-			<div class="input-field col s12">
+			<input type="hidden" name= "tipo" value="0">
+			<!-- <div class="input-field col s12">
 				<div class="input-field col s12">
 					<select name="tipo" id="tipo">
 						<option value="" disabled selected>Escolha um tipo </option>
@@ -81,7 +82,7 @@ include_once 'includes/style.php';
 					</select>
 				<label>Tipo</label>
 				</div>
-			</div>
+			</div> -->
 			<button type="submit" name="btn-cadastrar-medida" class="btn waves-effect waves-light blue"><i class="material-icons left">save</i> Cadastrar </button>
 			<a href="dashboard.php" class="btn green espaco-botao-dashboard-cadastrar"> <i class="material-icons left">dashboard</i>dashboard </a>
 		</form>		

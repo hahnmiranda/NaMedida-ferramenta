@@ -51,7 +51,7 @@ include_once 'includes/style.php';
 			
 			<tbody>
 				<?php 
-					$sql = "SELECT * FROM Organizacao WHERE idUsuario = '$id'";	
+					$sql = "SELECT * FROM organizacao WHERE idUsuario = '$id'";	
 					
 					$resultado = mysqli_query($connect, $sql);
 

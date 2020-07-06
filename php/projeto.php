@@ -50,7 +50,7 @@ include_once 'includes/style.php';
 			
 			<tbody>
 				<?php
-					$sql = "SELECT * FROM Projeto WHERE ";
+					$sql = "SELECT * FROM projeto WHERE ";
 					for ($i=0; $i < count($ids_setor); $i++) {
 						if ($i == 0):
 							$sql = $sql."idSetor = '$ids_setor[$i]'";
@@ -65,7 +65,7 @@ include_once 'includes/style.php';
 				<tr>
 					<td><?php
 						$id = $projeto_dados['idSetor'];
-						$sql = "SELECT nome FROM Setor WHERE idSetor = '$id'";
+						$sql = "SELECT nome FROM setor WHERE idSetor = '$id'";
 						$setor_nome = mysqli_query($connect, $sql);
 						$setor_nome = mysqli_fetch_array($setor_nome);
 						echo $setor_nome['nome'];

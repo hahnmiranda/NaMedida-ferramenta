@@ -32,7 +32,7 @@ include_once 'includes/style.php';
 if(isset($_GET['idMedida'])):
 	$id = mysqli_escape_string($connect, $_GET['idMedida']);
 
-	$sql = "SELECT * FROM Medida WHERE idMedida = '$id'";
+	$sql = "SELECT * FROM medida WHERE idMedida = '$id'";
 	$resultado = mysqli_query($connect, $sql);
 	$dados_medida = mysqli_fetch_array($resultado);
 endif;
@@ -58,7 +58,7 @@ endif;
 				<?php
 					// mysqli_num_rows
 					$id = $dados_medida['idMedida'];
-					$sql = "SELECT * FROM Medida_medida_associada WHERE idMedida = '$id'";
+					$sql = "SELECT * FROM medida_medida_associada WHERE idMedida = '$id'";
 					$resultado = mysqli_query($connect, $sql);
 					if (mysqli_num_rows($resultado) == 0) {
 						echo "<tr><td>Não há outras medidas vinculadas a essa. </td></tr>";
@@ -87,7 +87,7 @@ endif;
 					<?php 
 						for ($i=0; $i < count($ids_medida); $i++):
 							$id = $ids_medida[$i];
-							$sql = "SELECT * FROM Medida WHERE idMedida = '$id'";
+							$sql = "SELECT * FROM medida WHERE idMedida = '$id'";
 							$resultado_nome_medida = mysqli_query($connect, $sql);
 							$resultado_nome_medida = mysqli_fetch_array($resultado_nome_medida);
 							$contador = 0;

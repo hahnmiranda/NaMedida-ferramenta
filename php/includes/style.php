@@ -3,7 +3,7 @@
 		margin-right: 50px;
 	}
 	.brand-logo {
-		margin-left: 50px;
+		margin-left: 150px;
 	}
 	.sidenav-trigger {
 		margin-right: 0px;	

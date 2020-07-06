@@ -30,19 +30,19 @@ include_once 'includes/navbar.php';
 include_once 'includes/style.php';
 
 // select
-if(isset($_GET['idMedida'])):
-	$id = mysqli_escape_string($connect, $_GET['idMedida']);
+if(isset($_GET['idIndicador'])):
+	$id = mysqli_escape_string($connect, $_GET['idIndicador']);
 
-	$sql = "SELECT * FROM medida WHERE idMedida = '$id'";
+	$sql = "SELECT * FROM indicador WHERE idIndicador = '$id'";
 	$resultado = mysqli_query($connect, $sql);
-	$dados_medida = mysqli_fetch_array($resultado);
+	$dados_indicador = mysqli_fetch_array($resultado);
 endif;
 
 ?>
 
 <div class="row">
 	<div class="col s12 m6 push-m3">
-		<h3 class="light"> Editar a medida: "<?php echo $dados_medida['nome']; ?>"</h3>
+		<h3 class="light"> Editar o indicador: "<?php echo $dados_indicador['nome']; ?>"</h3>
 		<h5 class="light"></h5>
 		<form class="form-editar" action="update.php" method="POST">
 			<div class="input-field col s12">
@@ -51,7 +51,7 @@ endif;
 
 						<!-- Projeto atual da base aparece na tela de edição -->
 						<?php
-							$id = $dados_medida['idBase'];
+							$id = $dados_indicador['idBase'];
 							$sql = "SELECT * FROM base WHERE idBase = '$id'";
 							$resultado_nome_base = mysqli_query($connect, $sql);
 							$resultado_nome_base = mysqli_fetch_array($resultado_nome_base);
@@ -75,24 +75,28 @@ endif;
 				<label>Base</label>
 				</div>
 			</div>
-			<input type="hidden" name= "idMedida" value="<?php echo $dados_medida['idMedida']; ?>">
+			<input type="hidden" name= "idIndicador" value="<?php echo $dados_indicador['idIndicador']; ?>">
 			<div class="input-field col s12">
-				<input type="text" name="nome" id="nome" value="<?php echo $dados_medida['nome']?>">
+				<input type="text" name="nome" id="nome" value="<?php echo $dados_indicador['nome']?>">
 				<label for="nome">Nome</label>
 			</div>
 			<div class="input-field col s12">
-				<input type="text" name="descricao" id="descricao" value="<?php echo $dados_medida['descricao']?>">
+				<input type="text" name="descricao" id="descricao" value="<?php echo $dados_indicador['descricao']?>">
 				<label for="descricao">Descrição</label>
 			</div>
 			<div class="input-field col s12">
-				<input type="text" name="unidade_padrao" id="unidade_padrao" value="<?php echo $dados_medida['unidade_padrao']?>">
-				<label for="unidade_padrao">Unidade Padrão</label>
+				<input type="text" name="aceitavel" id="aceitavel" value="<?php echo $dados_indicador['aceitavel']?>">
+				<label for="aceitavel">Aceitável</label>
 			</div>
 			<div class="input-field col s12">
-				<input type="text" name="responsavel" id="responsavel" value="<?php echo $dados_medida['responsavel']?>">
-				<label for="responsavel">Responsável</label>
+				<input type="text" name="requer_atencao" id="requer_atencao" value="<?php echo $dados_indicador['requer_atencao']?>">
+				<label for="requer_atencao">Requer Atenção</label>
 			</div>
-			<button type="submit" name="btn-editar-medida" class="btn blue"> <i class="material-icons left">save</i> Salvar </button>
+			<div class="input-field col s12">
+				<input type="text" name="tomar_providencia" id="tomar_providencia" value="<?php echo $dados_indicador['tomar_providencia']?>">
+				<label for="tomar_providencia">Tomar Providência</label>
+			</div>
+			<button type="submit" name="btn-editar-indicador" class="btn blue"> <i class="material-icons left">save</i> Salvar </button>
 		</form>		
 	</div>
 </div>

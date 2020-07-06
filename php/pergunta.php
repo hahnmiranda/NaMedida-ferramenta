@@ -52,7 +52,7 @@ include_once 'includes/style.php';
 			<tbody>
 				<!-- Criando a variável sql para buscar no bd -->
 				<?php
-					$sql = "SELECT * FROM Pergunta WHERE ";
+					$sql = "SELECT * FROM pergunta WHERE ";
 					for ($i=0; $i < count($ids_objestrategico); $i++) {
 						if ($i == 0):
 							// buscando as bases que tenham os ids de objetivo estrategicos
@@ -71,7 +71,7 @@ include_once 'includes/style.php';
 					<td><?php
 					// buscando nome dos projetos aos quais a base pertence
 						$id = $pergunta_dados['idObjEstrategico'];
-						$sql = "SELECT nome FROM ObjEstrategico WHERE idObjEstrategico = '$id'";
+						$sql = "SELECT nome FROM objestrategico WHERE idObjEstrategico = '$id'";
 						$objestrategico_nome = mysqli_query($connect, $sql);
 						$objestrategico_nome = mysqli_fetch_array($objestrategico_nome);
 						echo $objestrategico_nome['nome'];

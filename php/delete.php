@@ -9,13 +9,13 @@ if (isset($_POST['btn-deletar-organizacao'])):
 	$id = mysqli_escape_string($connect, $_POST['idOrganizacao']);
 
 	// deletando as chaves estrangeiras das organizacoes
-	$sql = "UPDATE Projeto SET idOrganizacao = NULL WHERE idOrganizacao =  '".$id."'";
+	$sql = "UPDATE projeto SET idOrganizacao = NULL WHERE idOrganizacao =  '".$id."'";
 	$resultado = mysqli_query($connect, $sql);
 
-	$sql = "UPDATE ObjEstrategico SET idOrganizacao = NULL WHERE idOrganizacao =  '".$id."'";
+	$sql = "UPDATE objestrategico SET idOrganizacao = NULL WHERE idOrganizacao =  '".$id."'";
 	$resultado = mysqli_query($connect, $sql);
 
-	$sql = "DELETE FROM Organizacao WHERE idOrganizacao = '".$id."'";
+	$sql = "DELETE FROM organizacao WHERE idOrganizacao = '".$id."'";
 
 	if(mysqli_query($connect, $sql)):
 		$_SESSION['mensagem'] = "Deletado com sucesso!";
@@ -31,10 +31,10 @@ if (isset($_POST['btn-deletar-setor'])):
 	$id = mysqli_escape_string($connect, $_POST['idSetor']);
 
 	// deletando as chaves estrangeiras das bases
-	$sql = "UPDATE Projeto SET idSetor = NULL WHERE idSetor =  '".$id."'";
+	$sql = "UPDATE projeto SET idSetor = NULL WHERE idSetor =  '".$id."'";
 	$resultado = mysqli_query($connect, $sql);
 
-	$sql = "DELETE FROM Setor WHERE idSetor = '".$id."'";
+	$sql = "DELETE FROM setor WHERE idSetor = '".$id."'";
 
 	if(mysqli_query($connect, $sql)):
 		$_SESSION['mensagem'] = "Deletado com sucesso!";
@@ -50,10 +50,10 @@ if (isset($_POST['btn-deletar-projeto'])):
 	$id = mysqli_escape_string($connect, $_POST['idProjeto']);
 
 	// deletando as chaves estrangeiras das bases
-	$sql = "UPDATE Base SET idProjeto = NULL WHERE idProjeto =  '".$id."'";
+	$sql = "UPDATE base SET idProjeto = NULL WHERE idProjeto =  '".$id."'";
 	$resultado = mysqli_query($connect, $sql);
 
-	$sql = "DELETE FROM Projeto WHERE idProjeto = '".$id."'";
+	$sql = "DELETE FROM projeto WHERE idProjeto = '".$id."'";
 
 	if(mysqli_query($connect, $sql)):
 		$_SESSION['mensagem'] = "Deletado com sucesso!";
@@ -69,13 +69,13 @@ if (isset($_POST['btn-deletar-base'])):
 	$id = mysqli_escape_string($connect, $_POST['idBase']);
 
 	// deletando as chaves estrangeiras das bases
-	$sql = "UPDATE Medida SET idBase = NULL WHERE idBase =  '".$id."'";
+	$sql = "UPDATE medida SET idBase = NULL WHERE idBase =  '".$id."'";
 	$resultado = mysqli_query($connect, $sql);
 
-	$sql = "UPDATE Indicador SET idBase = NULL WHERE idBase =  '".$id."'";
+	$sql = "UPDATE indicador SET idBase = NULL WHERE idBase =  '".$id."'";
 	$resultado = mysqli_query($connect, $sql);
 
-	$sql = "DELETE FROM Base WHERE idBase = '".$id."'";
+	$sql = "DELETE FROM base WHERE idBase = '".$id."'";
 
 	if(mysqli_query($connect, $sql)):
 		$_SESSION['mensagem'] = "Deletado com sucesso!";
@@ -91,10 +91,10 @@ if (isset($_POST['btn-deletar-objestrategico'])):
 	$id = mysqli_escape_string($connect, $_POST['idObjEstrategico']);
 
 	// deletando as chaves estrangeiras das bases
-	$sql = "UPDATE Pergunta SET idObjEstrategico = NULL WHERE idObjEstrategico =  '".$id."'";
+	$sql = "UPDATE pergunta SET idObjEstrategico = NULL WHERE idObjEstrategico =  '".$id."'";
 	$resultado = mysqli_query($connect, $sql);
 
-	$sql = "DELETE FROM ObjEstrategico WHERE idObjEstrategico = '".$id."'";
+	$sql = "DELETE FROM objestrategico WHERE idObjEstrategico = '".$id."'";
 
 	if(mysqli_query($connect, $sql)):
 		$_SESSION['mensagem'] = "Deletado com sucesso!";
@@ -110,10 +110,10 @@ if (isset($_POST['btn-deletar-pergunta'])):
 	$id = mysqli_escape_string($connect, $_POST['idPergunta']);
 
 	// deletando as chaves estrangeiras das bases
-	$sql = "UPDATE PerguntaMedida SET idPergunta = NULL WHERE idPergunta =  '".$id."'";
+	$sql = "UPDATE perguntamedida SET idPergunta = NULL WHERE idPergunta =  '".$id."'";
 	$resultado = mysqli_query($connect, $sql);
 
-	$sql = "DELETE FROM Pergunta WHERE idPergunta = '".$id."'";
+	$sql = "DELETE FROM pergunta WHERE idPergunta = '".$id."'";
 
 	if(mysqli_query($connect, $sql)):
 		$_SESSION['mensagem'] = "Deletado com sucesso!";
@@ -128,7 +128,7 @@ endif;
 if (isset($_POST['btn-deletar-vinculo-pergunta-medida'])):
 	$id = mysqli_escape_string($connect, $_POST['idPerguntaMedida']);
 
-	$sql = "DELETE FROM PerguntaMedida WHERE idPerguntaMedida = '".$id."'";
+	$sql = "DELETE FROM perguntamedida WHERE idPerguntaMedida = '".$id."'";
 
 	if(mysqli_query($connect, $sql)):
 		$_SESSION['mensagem'] = "Deletado com sucesso!";
@@ -144,7 +144,7 @@ endif;
 if (isset($_POST['btn-deletar-vinculo-medida-medida'])):
 	$id = mysqli_escape_string($connect, $_POST['idMedida_derivada']);
 
-	$sql = "DELETE FROM Medida_medida_associada WHERE idMedida_derivada = '".$id."'";
+	$sql = "DELETE FROM medida_medida_associada WHERE idMedida_derivada = '".$id."'";
 
 	if(mysqli_query($connect, $sql)):
 		$_SESSION['mensagem'] = "Deletado com sucesso!";
@@ -152,6 +152,22 @@ if (isset($_POST['btn-deletar-vinculo-medida-medida'])):
 	else:
 		$_SESSION['mensagem'] = "Erro ao Deletar!";
 		header('Location: medida.php?erro');
+	endif;
+endif;
+
+// deletar vinculo medida indicador
+if (isset($_POST['btn-deletar-vinculo-medida-indicador'])):
+	$id = mysqli_escape_string($connect, $_POST['idIndicador_medida_associada']);
+
+	$sql = "DELETE FROM indicador_medida_associada WHERE idIndicador_medida_associada = '".$id."'";
+
+	if(mysqli_query($connect, $sql)):
+		$_SESSION['mensagem'] = "Deletado com sucesso!";
+		header('Location: indicador.php?sucesso');
+		
+	else:
+		$_SESSION['mensagem'] = "Erro ao Deletar!";
+		header('Location: indicador.php?erro');
 	endif;
 endif;
 
@@ -160,14 +176,14 @@ if (isset($_POST['btn-deletar-medida'])):
 	$id = mysqli_escape_string($connect, $_POST['idMedida']);
 
 	// deletando as chaves estrangeiras das bases
-	$sql = "UPDATE PerguntaMedida SET idMedida = NULL WHERE idMedida =  '".$id."'";
+	$sql = "UPDATE perguntamedida SET idMedida = NULL WHERE idMedida =  '".$id."'";
 	$resultado = mysqli_query($connect, $sql);
 
 	// deletando as chaves estrangeiras das bases
-	$sql = "UPDATE Medida_medida_associada SET idMedida = NULL WHERE idMedida =  '".$id."'";
+	$sql = "UPDATE medida_medida_associada SET idMedida = NULL WHERE idMedida =  '".$id."'";
 	$resultado = mysqli_query($connect, $sql);
 
-	$sql = "DELETE FROM Medida WHERE idMedida = '".$id."'";
+	$sql = "DELETE FROM medida WHERE idMedida = '".$id."'";
 
 	if(mysqli_query($connect, $sql)):
 		$_SESSION['mensagem'] = "Deletado com sucesso!";
@@ -178,11 +194,30 @@ if (isset($_POST['btn-deletar-medida'])):
 	endif;
 endif;
 
+// deletar indicador
+if (isset($_POST['btn-deletar-indicador'])):
+	$id = mysqli_escape_string($connect, $_POST['idIndicador']);
+
+	// deletando as chaves estrangeiras das bases
+	$sql = "DELETE FROM indicador_medida_associada WHERE idIndicador = '".$id."'";
+	$resultado = mysqli_query($connect, $sql);
+
+	$sql = "DELETE FROM indicador WHERE idIndicador = '".$id."'";
+
+	if(mysqli_query($connect, $sql)):
+		$_SESSION['mensagem'] = "Deletado com sucesso!";
+		header('Location: indicador.php?sucesso');
+	else:
+		$_SESSION['mensagem'] = "Erro ao Deletar!";
+		header('Location: indicador.php?erro');
+	endif;
+endif;
+
 // deletar coleta da medida
 if (isset($_POST['btn-deletar-coleta-medida'])):
 	$id = mysqli_escape_string($connect, $_POST['idMedida_modificacoes']);
 
-	$sql = "DELETE FROM Medida_modificacoes WHERE idMedida_modificacoes = '".$id."'";
+	$sql = "DELETE FROM medida_modificacoes WHERE idMedida_modificacoes = '".$id."'";
 
 	if(mysqli_query($connect, $sql)):
 		$_SESSION['mensagem'] = "Deletado com sucesso!";

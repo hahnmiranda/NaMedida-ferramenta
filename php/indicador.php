@@ -31,10 +31,18 @@ include_once 'includes/style.php';
 
 ?>
 
+
+<!-- $indicador[] = 'Base';
+$indicador[] = 'Nome';
+$indicador[] = 'Descrição';
+$indicador[] = 'Aceitável';
+$indicador[] = 'Requer Atenção';
+$indicador[] = 'Tomar Providência'; -->
+
 <div class="row">
 	<div class="col s12 m9 push-m2">
 		<h3 class="light"> Olá <?php echo $dados['nome']; ?>,</h3>
-		<h5 class="light">Essa é a sua lista de medidas </h5>
+		<h5 class="light">Essa é a sua lista de indicadores </h5>
 		
 		<table class="striped responsive-table">
 			<!-- Imprimindo cabeçalhos -->
@@ -42,8 +50,8 @@ include_once 'includes/style.php';
 				<tr>
 				<!-- Buscando dados da base no arquivo cabecalhos.php -->
 				<?php
-					$contador = count($medida);
-					foreach ($medida as $key) {
+					$contador = count($indicador);
+					foreach ($indicador as $key) {
 						echo "<th>$key</th>";
 					}
 				?>
@@ -53,7 +61,7 @@ include_once 'includes/style.php';
 			<tbody>
 				<!-- Criando a variável sql para buscar no bd -->
 				<?php
-					$sql = "SELECT * FROM medida WHERE ";
+					$sql = "SELECT * FROM indicador WHERE ";
 					for ($i=0; $i < count($ids_base); $i++) {
 						if ($i == 0):
 							// buscando as bases que tenham os ids de objetivo estrategicos
@@ -65,30 +73,30 @@ include_once 'includes/style.php';
 					}
 					$resultado = mysqli_query($connect, $sql);
 
-					while ($medida_dados = mysqli_fetch_array($resultado)):
+					while ($indicador_dados = mysqli_fetch_array($resultado)):
 				?> 
 				<tr> 
 					<!-- Imprimindo os dados da base -->
 					<td><?php
 					// buscando nome dos projetos aos quais a base pertence
-						$id = $medida_dados['idBase'];
+						$id = $indicador_dados['idBase'];
 						$sql = "SELECT nome FROM base WHERE idBase = '$id'";
 						$base_nome = mysqli_query($connect, $sql);
 						$base_nome = mysqli_fetch_array($base_nome);
 						echo $base_nome['nome'];
 					?></td>
-					<td><?php echo $medida_dados['nome']; ?></td>
-					<td><?php echo $medida_dados['descricao']; ?></td>
-					<td><?php echo $medida_dados['unidade_padrao']; ?></td>
-					<td><?php echo $medida_dados['responsavel']; ?></td>
-					<td><a href="vinculo-medida.php?idMedida=<?php echo $medida_dados['idMedida']; ?>" class="btn-floating green"><i class="material-icons">sync</i></a></td>
-					
-					<td><a href="lista-coleta-medida.php?idMedida=<?php echo $medida_dados['idMedida']; ?>" class="btn-floating orange"><i class="material-icons">remove_red_eye</i></a></td>
-					<td><a href="editar-medida.php?idMedida=<?php echo $medida_dados['idMedida']; ?>" class="btn-floating blue"><i class="material-icons">edit</i></a></td>
-					<td><a href="#modal<?php echo $medida_dados['idMedida']; ?>" class="btn-floating red modal-trigger"><i class="material-icons">delete</i></a></td>
+					<td><?php echo $indicador_dados['nome']; ?></td>
+					<td><?php echo $indicador_dados['descricao']; ?></td>
+					<td><?php echo $indicador_dados['aceitavel']; ?></td>
+					<td><?php echo $indicador_dados['requer_atencao']; ?></td>
+					<td><?php echo $indicador_dados['tomar_providencia']; ?></td>
+					<td><a href="vinculo-indicador.php?idIndicador=<?php echo $indicador_dados['idIndicador']; ?>" class="btn-floating green"><i class="material-icons">sync</i></a></td>
+
+					<td><a href="editar-indicador.php?idIndicador=<?php echo $indicador_dados['idIndicador']; ?>" class="btn-floating blue"><i class="material-icons">edit</i></a></td>
+					<td><a href="#modal<?php echo $indicador_dados['idIndicador']; ?>" class="btn-floating red modal-trigger"><i class="material-icons">delete</i></a></td>
 
 					<!-- Modal Structure -->
-					<div id="modal<?php echo $medida_dados['idMedida']; ?>" class="modal">
+					<div id="modal<?php echo $indicador_dados['idIndicador']; ?>" class="modal">
 						<div class="modal-content">
 						  	<h4>Opa!</h4>
 						  	<p>Tem certeza que deseja excluir este registro? (Você irá perder todos os registros vinculados a este.)</p>
@@ -97,8 +105,8 @@ include_once 'includes/style.php';
 						</div>
 						<div>
 							<form action="delete.php" method="POST">
-								<input type="hidden" name="idMedida" value="<?php echo $medida_dados['idMedida']; ?>">
-								<button type="submit" name="btn-deletar-medida" class="btn red modal-deletar-botao">Sim, quero deletar!</button>
+								<input type="hidden" name="idIndicador" value="<?php echo $indicador_dados['idIndicador']; ?>">
+								<button type="submit" name="btn-deletar-indicador" class="btn red modal-deletar-botao">Sim, quero deletar!</button>
 								<a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat modal-cancelar-botao">Cancelar</a>
 							</form>
 						</div>
@@ -108,7 +116,7 @@ include_once 'includes/style.php';
 			</tbody>
 		</table>
 		<br>
-		<a class='btn waves-effect waves-light blue' href='adicionar-medida.php'>adicionar medida<i class="material-icons left">add</i></a>
+		<a class='btn waves-effect waves-light blue' href='adicionar-indicador.php'>adicionar indicador<i class="material-icons left">add</i></a>
 	</div>
 </div>
 

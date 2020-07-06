@@ -33,7 +33,7 @@ include_once 'includes/style.php';
 if(isset($_GET['idMedida_modificacoes'])):
 	$id = mysqli_escape_string($connect, $_GET['idMedida_modificacoes']);
 
-	$sql = "SELECT * FROM Medida_modificacoes WHERE idMedida_modificacoes = '$id'";
+	$sql = "SELECT * FROM medida_modificacoes WHERE idMedida_modificacoes = '$id'";
 	$resultado = mysqli_query($connect, $sql);
 	$dados_modificacoes = mysqli_fetch_array($resultado);
 endif;

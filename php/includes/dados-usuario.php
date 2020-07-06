@@ -3,7 +3,7 @@
 // selecionando o usuário da sessão
 $id = $_SESSION['idUsuario'];
 // buscando os dados do usuário com a id
-$sql = "SELECT * FROM Usuario WHERE idUsuario = '$id'";
+$sql = "SELECT * FROM usuario WHERE idUsuario = '$id'";
 // conectando com o banco
 $resultado = mysqli_query($connect, $sql);
 // salvando os dados em um array
@@ -12,14 +12,14 @@ $dados = mysqli_fetch_array($resultado);
 // Abaixo estão em arrays todos os ids dos dados
 // do usuário para cada tipo de registro
 
-$sql = "SELECT * FROM Usuario WHERE idUsuario = '$id'";
+$sql = "SELECT * FROM usuario WHERE idUsuario = '$id'";
 $resultado = mysqli_query($connect, $sql);
 $dados_usuario= array();
 
 
 // organizacao
 $id = $dados['idUsuario'];
-$sql = "SELECT * FROM Organizacao WHERE idUsuario = '$id'";
+$sql = "SELECT * FROM organizacao WHERE idUsuario = '$id'";
 $resultado = mysqli_query($connect, $sql);
 // obtendo todos os ids das organizacoes do usuario
 $ids_organizacao = array();
@@ -44,7 +44,7 @@ while ($organizacao_dados = mysqli_fetch_array($resultado)) {
 // objetivo estrategico
 $ids_objestrategico = array();
 for ($i=0; $i < count($ids_organizacao); $i++) { 
-	$sql = "SELECT * FROM ObjEstrategico WHERE idOrganizacao = '$ids_organizacao[$i]'";
+	$sql = "SELECT * FROM objestrategico WHERE idOrganizacao = '$ids_organizacao[$i]'";
 	$resultado = mysqli_query($connect, $sql);
 	if (mysqli_num_rows($resultado) > 0) {
 		// obtendo todos os ids dos objetivos estrategicos das organizacoes
@@ -100,7 +100,7 @@ for ($i=0; $i < count($ids_organizacao); $i++) {
 // projeto
 $ids_projeto = array();
 for ($i=0; $i < count($ids_setor); $i++) { 
-	$sql = "SELECT * FROM Projeto WHERE idSetor = '$ids_setor[$i]'";
+	$sql = "SELECT * FROM projeto WHERE idSetor = '$ids_setor[$i]'";
 	$resultado = mysqli_query($connect, $sql);
 	if (mysqli_num_rows($resultado) > 0) {
 		// obtendo todos os ids dos objetivos estrategicos das organizacoes
@@ -128,7 +128,7 @@ for ($i=0; $i < count($ids_setor); $i++) {
 // pergunta
 $ids_pergunta = array();
 for ($i=0; $i < count($ids_objestrategico); $i++){ 
-	$sql = "SELECT * FROM Pergunta WHERE idObjEstrategico = '$ids_objestrategico[$i]'";
+	$sql = "SELECT * FROM pergunta WHERE idObjEstrategico = '$ids_objestrategico[$i]'";
 	$resultado = mysqli_query($connect, $sql);
 	if (mysqli_num_rows($resultado) > 0) {
 		// obtendo todos os ids dos objetivos estrategicos das organizacoes
@@ -156,7 +156,7 @@ for ($i=0; $i < count($ids_objestrategico); $i++){
 // base
 $ids_base = array();
 for ($i=0; $i < count($ids_projeto); $i++) { 
-	$sql = "SELECT * FROM Base WHERE idProjeto = '$ids_projeto[$i]'";
+	$sql = "SELECT * FROM base WHERE idProjeto = '$ids_projeto[$i]'";
 	$resultado = mysqli_query($connect, $sql);
 	if (mysqli_num_rows($resultado) > 0) {
 		// obtendo todos os ids dos objetivos estrategicos das organizacoes
@@ -184,7 +184,7 @@ for ($i=0; $i < count($ids_projeto); $i++) {
 // medida
 $ids_medida = array();
 for ($i=0; $i < count($ids_base); $i++) { 
-	$sql = "SELECT * FROM Medida WHERE idBase = '$ids_base[$i]'";
+	$sql = "SELECT * FROM medida WHERE idBase = '$ids_base[$i]'";
 	$resultado = mysqli_query($connect, $sql);
 	if (mysqli_num_rows($resultado) > 0) {
 		// obtendo todos os ids dos objetivos estrategicos das organizacoes
@@ -212,7 +212,7 @@ for ($i=0; $i < count($ids_base); $i++) {
 // indicador
 $ids_indicador = array();
 for ($i=0; $i < count($ids_base); $i++) { 
-	$sql = "SELECT * FROM Indicador WHERE idBase = '$ids_base[$i]'";
+	$sql = "SELECT * FROM indicador WHERE idBase = '$ids_base[$i]'";
 	$resultado = mysqli_query($connect, $sql);
 	if (mysqli_num_rows($resultado) > 0) {
 		// obtendo todos os ids dos objetivos estrategicos das organizacoes

@@ -37,7 +37,7 @@ include_once 'includes/style.php';
 		
 		<?php
 			$id = $dados['idUsuario'];
-			$sql = "SELECT * FROM Organizacao WHERE idUsuario = '$id'";	
+			$sql = "SELECT * FROM organizacao WHERE idUsuario = '$id'";	
 			
 			$resultado = mysqli_query($connect, $sql);
 			
@@ -57,6 +57,8 @@ include_once 'includes/style.php';
 						echo "<th>$key</th>";
 					}
 				?>
+				<th>Filtrar medidas</th>
+				<th>Filtrar indicadores</th>
 				</tr>
 			</thead>
 			
@@ -69,6 +71,7 @@ include_once 'includes/style.php';
 					<td><?php echo $organizacao_dados['nome']; ?></td>
 					<td><?php echo $organizacao_dados['descricao']; ?></td>
 					<td><a title="Filtrar medidas" href="filtrar-organizacao.php?idOrganizacao=<?php echo $organizacao_dados['idOrganizacao']; ?>" class="btn-floating green"><i class="material-icons">filter_list</i></a></td>
+					<td><a title="Filtrar indicadores" href="filtrar-organizacao-indicador.php?idOrganizacao=<?php echo $organizacao_dados['idOrganizacao']; ?>" class="btn-floating blue"><i class="material-icons">filter_list</i></a></td>
 				</tr>
 				<?php 
 				
@@ -81,7 +84,7 @@ include_once 'includes/style.php';
 		
 		<?php
 		if (count($ids_setor) > 0):
-			$sql = "SELECT * FROM Setor WHERE ";	
+			$sql = "SELECT * FROM setor WHERE ";	
 			
 			for($r=0; $r < count($ids_setor); $r++):
 				$id = $ids_setor[$r];
@@ -103,6 +106,8 @@ include_once 'includes/style.php';
 				<tr>
 				<th>Nome</th>
 				<th>Descrição</th>
+				<th>Filtrar medidas</th>
+				<th>Filtrar indicadores</th>
 				</tr>
 			</thead>
 			
@@ -115,6 +120,56 @@ include_once 'includes/style.php';
 					<td><?php echo $setor_dados['nome']; ?></td>
 					<td><?php echo $setor_dados['descricao']; ?></td>
 					<td><a title="Filtrar medidas" href="filtrar-setor.php?idSetor=<?php echo $setor_dados['idSetor']; ?>" class="btn-floating green"><i class="material-icons">filter_list</i></a></td>
+					<td><a title="Filtrar indicadores" href="filtrar-setor-indicador.php?idSetor=<?php echo $setor_dados['idSetor']; ?>" class="btn-floating blue"><i class="material-icons">filter_list</i></a></td>
+				</tr>
+				<?php 
+				
+				endwhile; 
+				
+				endif;
+				?>
+			</tbody>
+		</table>
+
+		<?php
+		if (count($ids_setor) > 0):
+			$sql = "SELECT * FROM projeto WHERE ";	
+			
+			for($r=0; $r < count($ids_projeto); $r++):
+				$id = $ids_projeto[$r];
+				if($r == 0):
+					$sql = $sql."idProjeto = '$id'";
+				else:
+					$sql = $sql." OR idProjeto = '$id'";
+				endif;
+			endfor;
+			
+			$resultado = mysqli_query($connect, $sql);
+		?>
+		
+		<h5 class="titulo-filtro-dashboard"> Projetos </h5>
+
+		<table class="striped responsive-table table-filtrar-dashboard">
+			<!-- Imprimindo cabeçalhos -->
+			<thead>
+				<tr>
+				<th>Nome</th>
+				<th>Descrição</th>
+				<th>Filtrar medidas</th>
+				<th>Filtrar indicadores</th>
+				</tr>
+			</thead>
+			
+			<tbody>
+				<?php 
+
+					while ($projeto_dados = mysqli_fetch_array($resultado)):
+				?> 
+				<tr>
+					<td><?php echo $projeto_dados['nome']; ?></td>
+					<td><?php echo $projeto_dados['descricao']; ?></td>
+					<td><a title="Filtrar medidas" href="filtrar-projeto.php?idProjeto=<?php echo $projeto_dados['idProjeto']; ?>" class="btn-floating green"><i class="material-icons">filter_list</i></a></td>
+					<td><a title="Filtrar indicadores" href="filtrar-projeto-indicador.php?idProjeto=<?php echo $projeto_dados['idProjeto']; ?>" class="btn-floating blue"><i class="material-icons">filter_list</i></a></td>
 				</tr>
 				<?php 
 				
@@ -138,7 +193,7 @@ include_once 'includes/style.php';
 		    <li><a href="adicionar-projeto.php">Projetos</a></li>
 		    <li><a href="adicionar-base.php">Bases</a></li>
 		    <li><a href="adicionar-medida.php">Medidas</a></li>
-		    <li><a href="#!">Indicadores</a></li>
+		    <li><a href="adicionar-indicador.php">Indicadores</a></li>
 		  </ul>
 	</div>
 </div>

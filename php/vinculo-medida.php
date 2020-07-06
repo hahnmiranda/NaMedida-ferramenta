@@ -32,7 +32,7 @@ include_once 'includes/style.php';
 // select
 if(isset($_GET['idMedida'])):
 	$id = mysqli_escape_string($connect, $_GET['idMedida']);
-	$sql = "SELECT * FROM Medida WHERE idMedida = '$id'";
+	$sql = "SELECT * FROM medida WHERE idMedida = '$id'";
 	$resultado = mysqli_query($connect, $sql);
 	$dados_medida = mysqli_fetch_array($resultado);
 endif;
@@ -55,14 +55,14 @@ endif;
 				<?php
 					// mysqli_num_rows
 					$id = $dados_medida['idMedida'];
-					$sql = "SELECT * FROM PerguntaMedida WHERE idMedida = '$id'";
+					$sql = "SELECT * FROM perguntamedida WHERE idMedida = '$id'";
 					$resultado = mysqli_query($connect, $sql);
 					if (mysqli_num_rows($resultado) == 0) {
 						echo "<tr><td>Não há perguntas vinculadas a essa medida. </td></tr>";
 					}
 					while ($dados_pergunta_medida = mysqli_fetch_array($resultado)) {
 						$id = $dados_pergunta_medida['idPergunta'];
-						$sql = "SELECT nome FROM Pergunta WHERE idPergunta = '$id'";
+						$sql = "SELECT nome FROM pergunta WHERE idPergunta = '$id'";
 						$resultado2 = mysqli_query($connect, $sql);
 						$pergunta_nome = mysqli_fetch_array($resultado2);
 						?> <tr><td>
@@ -110,7 +110,7 @@ endif;
 				<?php
 					// mysqli_num_rows
 					$id = $dados_medida['idMedida'];
-					$sql = "SELECT * FROM Medida_medida_associada WHERE idMedida = '$id'";
+					$sql = "SELECT * FROM medida_medida_associada WHERE idMedida = '$id'";
 					$resultado = mysqli_query($connect, $sql);
 					
 					if (mysqli_num_rows($resultado) == 0) {
@@ -119,7 +119,7 @@ endif;
 
 					while ($dados_medida_medida = mysqli_fetch_array($resultado)) {
 						$id = $dados_medida_medida['idMedida_associada'];
-						$sql = "SELECT nome FROM Medida WHERE idMedida = '$id'";
+						$sql = "SELECT nome FROM medida WHERE idMedida = '$id'";
 						$resultado2 = mysqli_query($connect, $sql);
 						$pergunta_nome = mysqli_fetch_array($resultado2);
 						?> <tr><td>

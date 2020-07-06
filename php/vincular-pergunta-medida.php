@@ -32,7 +32,7 @@ include_once 'includes/style.php';
 if(isset($_GET['idMedida'])):
 	$id = mysqli_escape_string($connect, $_GET['idMedida']);
 
-	$sql = "SELECT * FROM Medida WHERE idMedida = '$id'";
+	$sql = "SELECT * FROM medida WHERE idMedida = '$id'";
 	$resultado = mysqli_query($connect, $sql);
 	$dados_medida = mysqli_fetch_array($resultado);
 endif;
@@ -46,37 +46,7 @@ endif;
 		<form action="create.php" method="POST">
 		<input type="hidden" name= "idMedida" value="<?php echo $dados_medida['idMedida']; ?>">
 
-			<table class="striped responsive-table">
-			<thead>
-				<tr>
-					<th>Perguntas já vinculadas a medida "<?php echo $dados_medida['nome'];?>"</th>
-				</tr>
-			</thead>
-
-			<tbody>
-
-				<?php
-					// mysqli_num_rows
-					$id = $dados_medida['idMedida'];
-					$sql = "SELECT * FROM PerguntaMedida WHERE idMedida = '$id'";
-					$resultado = mysqli_query($connect, $sql);
-					if (mysqli_num_rows($resultado) == 0) {
-						echo "<tr><td>Não há perguntas vinculadas a essa medida. </td></tr>";
-					}
-					$perguntas_ja_vinculadas = array();
-					while ($dados_pergunta_medida = mysqli_fetch_array($resultado)) {
-						$id = $dados_pergunta_medida['idPergunta'];
-						$perguntas_ja_vinculadas[] = $dados_pergunta_medida['idPergunta'];
-						$sql = "SELECT nome FROM Pergunta WHERE idPergunta = '$id'";
-						$resultado2 = mysqli_query($connect, $sql);
-						$pergunta_nome = mysqli_fetch_array($resultado2);
-						?> <tr><td>
-							<?php echo $pergunta_nome['nome'];?>
-						</td></tr><?php
-					}
-				?>
-			</tbody>			
-		</table>
+			
 
 		<div class="input-field col s12">
 			<div class="input-field col s12">
@@ -87,7 +57,7 @@ endif;
 					<?php 
 						for ($i=0; $i < count($ids_pergunta); $i++):
 							$id = $ids_pergunta[$i];
-							$sql = "SELECT * FROM Pergunta WHERE idPergunta = '$id'";
+							$sql = "SELECT * FROM pergunta WHERE idPergunta = '$id'";
 							$resultado_nome_pergunta = mysqli_query($connect, $sql);
 							$resultado_nome_pergunta = mysqli_fetch_array($resultado_nome_pergunta);
 							$contador = 0;

@@ -13,14 +13,15 @@ if(isset($_POST['btn-entrar'])):
 	$senha = mysqli_escape_string($connect, $_POST['senha']);
 
 	if(empty($login) or empty($senha)):
-		$erros[] = "<li>O campo login/senha deve ser preenchido</li>";
+		$erros[] = "<li>O campo login/senha deve ser preenchido </li>";
 	else:
-		$sql = "SELECT login FROM Usuario WHERE login = '$login'";
+		$sql = "SELECT login FROM usuario WHERE login = '$login'";
+		
 		// realizando a consulta no banco
 		$resultado = mysqli_query($connect, $sql);
 
 		if(mysqli_num_rows($resultado) > 0):
-			$sql = "SELECT * FROM Usuario WHERE login = '$login' and senha = '$senha'";
+			$sql = "SELECT * FROM usuario WHERE login = '$login' and senha = '$senha'";
 			$resultado = mysqli_query($connect, $sql);
 
 			if(mysqli_num_rows($resultado) == 1):
@@ -52,12 +53,17 @@ include_once 'php/includes/style.php';
 <body class="index-body">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
 
+	
+
 	<div class="row login">
 		<div class="col s12 m6 offset-m3 l4 offset-l4 z-depth-6">
 			<div class="card">
 
 				<div class="card-action blue white-text">
 					<h3>Faça seu login</h3>
+				</div>
+				<div id="logo-login">
+					<img src="img/logo.png" width="200" style="position: absolute; margin-top: -200; left: 60%">
 				</div>
 				<div class="card-content">
 					<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">

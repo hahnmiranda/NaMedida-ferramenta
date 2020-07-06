@@ -5,6 +5,10 @@
 					<!-- Logo -->
 					<a href="#" class="brand-logo">NaMedida!</a>
 
+					<div id="logo-login">
+						<img src="../img/logo.png" width="100" style="position: absolute; margin-top: -200; left: 3%">
+					</div>
+
 					<!-- Mobile -->
 					<a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 
@@ -25,7 +29,7 @@
 						    <li><a href="projeto.php">Projetos</a></li>
 						    <li><a href="base.php">Bases</a></li>
 						    <li><a href="medida.php">Medidas</a></li>
-						    <li><a href="#!">Indicadores</a></li>
+						    <li><a href="indicador.php">Indicadores</a></li>
 						  </ul>
 						</li>
 						<li><a title="Sair" href="logout.php"><i class="material-icons left">exit_to_app</i></a></li>

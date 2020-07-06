@@ -33,7 +33,7 @@ include_once 'includes/style.php';
 if(isset($_GET['idPergunta'])):
 	$id = mysqli_escape_string($connect, $_GET['idPergunta']);
 
-	$sql = "SELECT * FROM Pergunta WHERE idPergunta = '$id'";
+	$sql = "SELECT * FROM pergunta WHERE idPergunta = '$id'";
 	$resultado = mysqli_query($connect, $sql);
 	$dados_pergunta = mysqli_fetch_array($resultado);
 endif;
@@ -53,7 +53,7 @@ endif;
 						<!-- Projeto atual da base aparece na tela de edição -->
 						<?php
 							$id = $dados_pergunta['idObjEstrategico'];
-							$sql = "SELECT * FROM ObjEstrategico WHERE idObjEstrategico = '$id'";
+							$sql = "SELECT * FROM objestrategico WHERE idObjEstrategico = '$id'";
 							$resultado_nome_objestrategico = mysqli_query($connect, $sql);
 							$resultado_nome_objestrategico = mysqli_fetch_array($resultado_nome_objestrategico);
 						?>
@@ -64,7 +64,7 @@ endif;
 						<?php 
 							for ($i=0; $i < count($ids_objestrategico); $i++):
 								$id = $ids_objestrategico[$i];
-								$sql = "SELECT * FROM ObjEstrategico WHERE idObjEstrategico = '$id'";
+								$sql = "SELECT * FROM objestrategico WHERE idObjEstrategico = '$id'";
 								$resultado_nome_objestrategico = mysqli_query($connect, $sql);
 								$resultado_nome_objestrategico = mysqli_fetch_array($resultado_nome_objestrategico);
 								?>

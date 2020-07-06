@@ -44,7 +44,7 @@ include_once 'includes/style.php';
 						<?php 
 							for ($i=0; $i < count($ids_setor); $i++):
 								$id = $ids_setor[$i];
-								$sql = "SELECT * FROM Setor WHERE idSetor = '$id'";
+								$sql = "SELECT * FROM setor WHERE idSetor = '$id'";
 								$resultado_nome_setor = mysqli_query($connect, $sql);
 								$resultado_nome_setor = mysqli_fetch_array($resultado_nome_setor);
 								?>

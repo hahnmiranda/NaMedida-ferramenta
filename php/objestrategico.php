@@ -50,7 +50,7 @@ include_once 'includes/style.php';
 			
 			<tbody>
 				<?php
-					$sql = "SELECT * FROM ObjEstrategico WHERE ";
+					$sql = "SELECT * FROM objestrategico WHERE ";
 					for ($i=0; $i < count($ids_organizacao); $i++) {
 						if ($i == 0):
 							$sql = $sql."idOrganizacao = '$ids_organizacao[$i]'";
@@ -65,7 +65,7 @@ include_once 'includes/style.php';
 				<tr>
 					<td><?php
 						$id = $objestrategico_dados['idOrganizacao'];
-						$sql = "SELECT nome FROM Organizacao WHERE idOrganizacao = '$id'";
+						$sql = "SELECT nome FROM organizacao WHERE idOrganizacao = '$id'";
 						$organizacao_nome = mysqli_query($connect, $sql);
 						$organizacao_nome = mysqli_fetch_array($organizacao_nome);
 						echo $organizacao_nome['nome'];

@@ -33,7 +33,7 @@ include_once 'includes/style.php';
 if(isset($_GET['idProjeto'])):
 	$id = mysqli_escape_string($connect, $_GET['idProjeto']);
 
-	$sql = "SELECT * FROM Projeto WHERE idProjeto = '$id'";
+	$sql = "SELECT * FROM projeto WHERE idProjeto = '$id'";
 	$resultado = mysqli_query($connect, $sql);
 	$dados_projeto = mysqli_fetch_array($resultado);
 endif;
@@ -53,7 +53,7 @@ endif;
 						<!-- Organizacao atual do projeto aparece na tela de edição -->
 						<?php
 							$id = $dados_projeto['idSetor'];
-							$sql = "SELECT * FROM Setor WHERE idSetor = '$id'";
+							$sql = "SELECT * FROM setor WHERE idSetor = '$id'";
 							$resultado_nome_setor = mysqli_query($connect, $sql);
 							$resultado_nome_setor = mysqli_fetch_array($resultado_nome_setor);
 						?>
@@ -64,7 +64,7 @@ endif;
 						<?php 
 							for ($i=0; $i < count($ids_setor); $i++):
 								$id = $ids_setor[$i];
-								$sql = "SELECT * FROM Setor WHERE idSetor = '$id'";
+								$sql = "SELECT * FROM setor WHERE idSetor = '$id'";
 								$resultado_nome_setor = mysqli_query($connect, $sql);
 								$resultado_nome_setor = mysqli_fetch_array($resultado_nome_setor);
 								?>

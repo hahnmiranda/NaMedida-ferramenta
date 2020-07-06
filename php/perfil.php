@@ -50,7 +50,7 @@ include_once 'includes/style.php';
 			
 			<tbody>
 				<?php 
-					$sql = "SELECT * FROM Usuario WHERE idUsuario = '$id'";
+					$sql = "SELECT * FROM usuario WHERE idUsuario = '$id'";
 					$resultado = mysqli_query($connect, $sql);
 					while ($usuario_dados = mysqli_fetch_array($resultado)) {
 				?> 
