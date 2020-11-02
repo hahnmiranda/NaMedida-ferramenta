@@ -312,7 +312,6 @@ CREATE TABLE `projeto` (
 INSERT INTO `projeto` (`idProjeto`, `nome`, `descricao`, `responsavel`, `data_inicio`, `data_termino`, `idSetor`) VALUES
 (1, 'PIBIC', 'Teste do banco', 'João', '2020-07-05 23:09:10', '2020-07-06 23:09:10', 1),
 (2, 'Novo', 'Nosso novo projeto', 'EuMesmo', '2020-05-18 00:00:00', '2020-05-25 00:00:00', 1),
-(4, 'asdasdasd', 'asdaslj kljfaklj flkja kaj klsj fljlkajlkajksj', 'Regina', '2020-05-18 00:00:00', '0000-00-00 00:00:00', 3),
 (9, 'Projeto Teste', 'Teste do projeto', 'Guilherme', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 4);
 
 -- --------------------------------------------------------
